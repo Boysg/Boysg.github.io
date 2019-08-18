@@ -1,0 +1,862 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>数据库系统概述 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="基本概念区分：数据、数据库、数据库管理系统、数据库系统。
+">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 数据库">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://blog.yinchenxu.work">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="数据库系统概述 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://blog.yinchenxu.work/2019/08/17/数据库系统概述/">
+<meta property="og:image" content="https://blog.yinchenxu.work/img/suka-favicon.ico">
+
+<meta property="og:description" content="基本概念区分：数据、数据库、数据库管理系统、数据库系统。
+">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-08-17T12:54:02.000Z">
+    <meta property="article:modified_time" content="2019-08-17T12:54:02.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", 数据库"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.yinchenxu.work/2019/08/17/数据库系统概述/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.yinchenxu.work/2019/08/17/数据库系统概述/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.yinchenxu.work/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.yinchenxu.work/2019/08/17/数据库系统概述/"
+    },
+    "headline": "数据库系统概述 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-08-17T12:54:02.000Z",
+    "dateModified": "2019-08-18T16:40:36.200Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.yinchenxu.work/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 数据库",
+    "description": "基本概念区分：数据、数据库、数据库管理系统、数据库系统。
+"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">Home</a>
+    
+    
+        <a href="/archives/" class="navbar-link">Archives</a>
+    
+    
+        <a href="/search" class="navbar-link">Search</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">Share</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://blog.yinchenxu.work&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://blog.yinchenxu.work&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work&title=数据库系统概述" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=数据库系统概述&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.yinchenxu.work&text=数据库系统概述" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB0klEQVR42u3bwZICIQyE4Xn/l969WhR0d9ADE/65rKUjfFoIJGSfvwOvBxQoUKAmqEdc4z3j/Z+vr+4r9QOqDWo66MTzY4Nj4yM07QdUL9SsI/d85YO59kDdhVp1vJocdz4kqLtQyaCevQbqbtSqg1UDCrE9wYJqg1Ib+l/+/Vk0A+polE06TIKCZKCrSfbrrAuoo1FqIKrOVWDqNn0rNKgeKLVgrmBJQkwl0eLJE9RrUekgVQurmnBdggRUT5Ta7CeDvPo4GuigXouqbu7SYNX9MED1RKlkaiUhmwSxti9QbVAOkYCSYEEhQfVCJcFCpZPKwTeofig3SbrG3WF3WrwDqg9KBQJJ4sMFoUmAAao3qpIwS5K2pcUdVAtUEjQkBVvuMDtKtoFqgVKJ1LTYIU2W2QkWVCuUmkQrSY6d94Hqh0qC0qS4yy3WLtELqhcqPQBKcQoM6g5UWuSeJNcqhT3lKmtQx6OSw8j0QGm3IAxUL1RSaLyz6XP3RlkXUK9FuWIIl/BKA1oXqIDqhXLFDunimv7DxfSLAHUVKsF8U1gI6i7UToIjPQDYHuigjke5w2vXoJpcXZE0qH6oStGxW5hVAsQFD6B6oE66QIECBerj+gdKZ+/PHx/DIAAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">数据库系统概述</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-08-17</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/数据库系统原理/">数据库系统原理</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">Share the post</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=数据库系统概述&url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=数据库系统概述&url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.yinchenxu.work/2019/08/17/数据库系统概述/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB0klEQVR42u3bwZICIQyE4Xn/l969WhR0d9ADE/65rKUjfFoIJGSfvwOvBxQoUKAmqEdc4z3j/Z+vr+4r9QOqDWo66MTzY4Nj4yM07QdUL9SsI/d85YO59kDdhVp1vJocdz4kqLtQyaCevQbqbtSqg1UDCrE9wYJqg1Ib+l/+/Vk0A+polE06TIKCZKCrSfbrrAuoo1FqIKrOVWDqNn0rNKgeKLVgrmBJQkwl0eLJE9RrUekgVQurmnBdggRUT5Ta7CeDvPo4GuigXouqbu7SYNX9MED1RKlkaiUhmwSxti9QbVAOkYCSYEEhQfVCJcFCpZPKwTeofig3SbrG3WF3WrwDqg9KBQJJ4sMFoUmAAao3qpIwS5K2pcUdVAtUEjQkBVvuMDtKtoFqgVKJ1LTYIU2W2QkWVCuUmkQrSY6d94Hqh0qC0qS4yy3WLtELqhcqPQBKcQoM6g5UWuSeJNcqhT3lKmtQx6OSw8j0QGm3IAxUL1RSaLyz6XP3RlkXUK9FuWIIl/BKA1oXqIDqhXLFDunimv7DxfSLAHUVKsF8U1gI6i7UToIjPQDYHuigjke5w2vXoJpcXZE0qH6oStGxW5hVAsQFD6B6oE66QIECBerj+gdKZ+/PHx/DIAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#基本概念"><span class="post-toc-number">1.</span> <span class="post-toc-text">基本概念</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据（Data）"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">数据（Data）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库（Database-DB）"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">数据库（Database, DB）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库管理系统（Database-Management-System-DBMS）"><span class="post-toc-number">1.3.</span> <span class="post-toc-text">数据库管理系统（Database Management System, DBMS）</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库系统（Database-System-DBS）"><span class="post-toc-number">1.4.</span> <span class="post-toc-text">数据库系统（Database System, DBS）</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据管理技术发展"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据管理技术发展</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#人工管理阶段"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">人工管理阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#文件系统阶段"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">文件系统阶段</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库系统阶段"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">数据库系统阶段</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库系统的结构"><span class="post-toc-number">3.</span> <span class="post-toc-text">数据库系统的结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#三级模式结构"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">三级模式结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#模式"><span class="post-toc-number">3.1.1.</span> <span class="post-toc-text">模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#外模式"><span class="post-toc-number">3.1.2.</span> <span class="post-toc-text">外模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#内模式"><span class="post-toc-number">3.1.3.</span> <span class="post-toc-text">内模式</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据独立性"><span class="post-toc-number">3.1.4.</span> <span class="post-toc-text">数据独立性</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#两层映像"><span class="post-toc-number">3.1.5.</span> <span class="post-toc-text">两层映像</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据库系统的运行与应用结构"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">数据库系统的运行与应用结构</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#客户-服务器结构（C-S）"><span class="post-toc-number">3.2.1.</span> <span class="post-toc-text">客户/服务器结构（C/S）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#浏览器-服务器结构（B-S）"><span class="post-toc-number">3.2.2.</span> <span class="post-toc-text">浏览器/服务器结构（B/S）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据模型"><span class="post-toc-number">4.</span> <span class="post-toc-text">数据模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据特征与数据模型组成要素"><span class="post-toc-number">4.1.</span> <span class="post-toc-text">数据特征与数据模型组成要素</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#数据模型的分类"><span class="post-toc-number">4.2.</span> <span class="post-toc-text">数据模型的分类</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#概念层数据模型（概念模型-Conceptual-Model）"><span class="post-toc-number">4.2.1.</span> <span class="post-toc-text">概念层数据模型（概念模型, Conceptual Model）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#逻辑层数据模型（逻辑模型，-Logical-Model）"><span class="post-toc-number">4.2.2.</span> <span class="post-toc-text">逻辑层数据模型（逻辑模型， Logical Model）</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#物理层数据模型（物理模型，-Physical-Model）"><span class="post-toc-number">4.2.3.</span> <span class="post-toc-text">物理层数据模型（物理模型， Physical Model）</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附记"><span class="post-toc-number">5.</span> <span class="post-toc-text">附记</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="基本概念"><a href="#基本概念" class="headerlink" title="基本概念"></a>基本概念</h2><p>区分：数据、数据库、数据库管理系统、数据库系统。</p>
+<h3 id="数据（Data）"><a href="#数据（Data）" class="headerlink" title="数据（Data）"></a>数据（Data）</h3><ul>
+<li>数据是指记录客观事物的物理符号</li>
+<li>数据具有多种表现形式：文本数据、多媒体数据、抽象数据等</li>
+<li>日常使用的学生的档案记录、货物的运输情况等都是数据</li>
+</ul>
+<p>为了在计算机中有效的存储和处理客观事物，就需要抽取一些有价值的事物特征（属性）来描述事物，例如，在学生档案中，人们通常关注学生的姓名、性别、年龄、专业、班级等，这些属性所构成的一组数据称为 <em>记录</em> 。</p>
+<p>数据是 <em>信息</em> 的表现形式和载体，只有通过解释或处理的数据才能成为有用的信息，数据的解释也成为 <em>数据的语义</em> ，是对数据含义的说明，没有语义的数据是没有意义和不完整的，例如，93是一个数据，可以是一个同学某门课的成绩，也可以使某个人的体重，还可以是某个社团学生人数。</p>
+<h3 id="数据库（Database-DB）"><a href="#数据库（Database-DB）" class="headerlink" title="数据库（Database, DB）"></a>数据库（Database, DB）</h3><ul>
+<li>数据库通俗地讲，被称作存储数据的仓库，按一定格式存储在存储设备上</li>
+<li>严格意义上讲，数据库是长期储存在计算机中，有组织的、可共享的数据集合</li>
+<li>数据库中的数据具有较小的冗余度、较高的数据独立性，易于扩展，可以被多个用户共享</li>
+<li>数据库中数据的三个基本特点：永久存储、有组织、可共享</li>
+</ul>
+<h3 id="数据库管理系统（Database-Management-System-DBMS）"><a href="#数据库管理系统（Database-Management-System-DBMS）" class="headerlink" title="数据库管理系统（Database Management System, DBMS）"></a>数据库管理系统（Database Management System, DBMS）</h3><ul>
+<li>数据库管理系统是专门用于建立和管理数据库的一套软件，介于应用程序和操作系统之间</li>
+<li>它对数据库进行统一的管理和控制，以保证数据库的安全性和完整性</li>
+</ul>
+<p>其主要功能包括如下几个方面：</p>
+<p>1).数据定义功能</p>
+<p>​用户通过数据定义语言 <em>DDL（Data Definition Language）</em> ，定义数据库中的数据对象（表、视图、存储过程、触发器等）。DDL主要用于建立、修改数据库的库结构。注意，DDL所描述的库结构仅仅给出了数据库的框架，数据库的框架信息被存放在 <em>数据字典（Data Dictionary）</em> 中。</p>
+<p>2).数据操纵功能</p>
+<p>用户通过数据操纵语言 <em>DML（Data Manipulation Language）</em> ，供用户实现对数据的查询、插入、删除、修改基本操作。</p>
+<p>3).数据库的运行管理功能</p>
+<p>数据库管理系统提供了统一的控制和管理机制，包括多用户环境下的并发控制、安全性检查和存取限制控制、完整性检查和执行、运行日志的组织管理、事务的管理和自动恢复，即保证事务的原子性。这些功能保证了数据库系统的正常运行。<br>用户通过数据控制语言 <em>DCL（Data Control Language）</em> ，管理数据库用户或角色的权限。</p>
+<p>4).数据库的建立和维护功能</p>
+<p>包括：创建数据库时对数据库空间的维护、数据库的备份与恢复、数据库的重组织功能和性能监视、分析等，这些功能通常通过实用工具实现。</p>
+<p>5).数据组织、存储和管理功能</p>
+<p>数据库系统对数据进行的分类存储和管理，这些数据包括数据字典、用户数据、存取路径等，需定义具体的组织和存储方式以及数据之间的联系，并提供多种数据存取方法，如索引查找、顺序查找。数据组织和存储的基本目标是提高存储空间利用率，选择合适的存取方法提高存取效率。</p>
+<p>6).其他功能<br>包括：与其他软件的网络通信功能、不同数据库管理系统之间的互操作功能。</p>
+<h3 id="数据库系统（Database-System-DBS）"><a href="#数据库系统（Database-System-DBS）" class="headerlink" title="数据库系统（Database System, DBS）"></a>数据库系统（Database System, DBS）</h3><img src="/2019/08/17/数据库系统概述/databaseSystem.png" title="数据库系统">
+<ul>
+<li>通常一个完整的数据库系统包括数据库、数据库管理系统（以及实用工具）、应用程序、数据库管理员（DBA）、数据库用户（程序员、终端用户）</li>
+<li>通常将“数据库系统”简称为“数据库”</li>
+</ul>
+<h2 id="数据管理技术发展"><a href="#数据管理技术发展" class="headerlink" title="数据管理技术发展"></a>数据管理技术发展</h2><ul>
+<li>数据管理：一是制定并执行整个业务中关于数据的定义、组织、保护与有效使用的策略、过程和计划（ps:定义过于学术，难以理解）；二是利用硬件和软件技术对数据进行有效的集中控制管理（收集、存储、处理和应用）</li>
+<li>数据组织：将收集的数据转换成计算机可处理的形式并适当构造，数据组织分为逻辑组织和物理组织</li>
+<li>逻辑组织：用户或应用程序使用的数据结构形式</li>
+<li>物理组织：数据在物理存储设备上的存储形式</li>
+<li>检索：存储的数据能够方便地被选择提取</li>
+<li>数据管理的任务：进行数据的收集、组织、控制、存储、选取、维护，在适当的时刻、以适当的形式、给适当的人、提供适当的数据</li>
+<li>数据处理：对各种数据进行收集、存储、加工和传播的一系列活动总和</li>
+<li>数据管理技术经历了三个阶段：人工管理、文件系统、数据库系统</li>
+</ul>
+<h3 id="人工管理阶段"><a href="#人工管理阶段" class="headerlink" title="人工管理阶段"></a>人工管理阶段</h3><p>20世纪50年代中期以前，计算机主要用于科学计算，没有存储设备（数据放在纸带或卡片上），软件只有汇编语言，没有操作系统，数据处理通过批处理实现，程序结束后数据不会保存。</p>
+<p>此阶段数据管理特点如下：</p>
+<ol>
+<li>数据不保存：数据空间随程序空间一起释放</li>
+<li>应用程序管理数据：逻辑结构、物理结构、存取方法等数据库设计工作都由程序员完成</li>
+<li>数据面向应用：一组数据只能对应一个应用程序（数据不共享）</li>
+<li>数据不具有独立性：应用程序中只要发生改变，数据的逻辑结构或物理结构就相应的发生变化</li>
+</ol>
+<h3 id="文件系统阶段"><a href="#文件系统阶段" class="headerlink" title="文件系统阶段"></a>文件系统阶段</h3><p>20世纪50年代后期到60年代中期，产生了磁盘、磁鼓等存储设备，有操作系统，并配备了专门的数据管理软件：文件系统。</p>
+<p>文件系统将数据的逻辑结构和物理结构分离，应用程序只涉及数据逻辑结构，系统决定其物理结构，物理结构改变不会导致应用程序修改（数据的物理独立性）</p>
+<p>注意，在文件系统中，不能实现数据的普通共享，只能实现文件级的共享，不同应用必须构造各自的文件，不能实现记录或数据项级的共享。</p>
+<p>此阶段数据管理特点如下：</p>
+<ol>
+<li>数据可以长期保存：有了存储设备，计算机开始被用来处理大量的数据并存储数据</li>
+<li>有简单的数据管理功能：文件的逻辑结构和物理结构脱钩，程序和数据分离，是数据和程序有了一定的独立性，减少了程序员的工作量</li>
+<li>数据共享能力差：由于每一个文件都是独立的，当需要用到相同的数据时，必须建立各自的文件，数据还是无法共享，也会造成大量的数据冗余</li>
+<li>数据不具有独立性：在此阶段数据仍然不具有独立性，当数据的结构发生变化时，也必须修改应用程序，修改文件的结构定义；应用程序发生改变时，也将改变数据的结构</li>
+</ol>
+<h3 id="数据库系统阶段"><a href="#数据库系统阶段" class="headerlink" title="数据库系统阶段"></a>数据库系统阶段</h3><p>20世纪60年代后期以来，计算机管理的对象规模越来越大，应用范围又越来越广泛，数据量急剧增长，数据库技术便应运而生，出现了统一管理数据的专门软件系统：数据库管理系统。</p>
+<p>此阶段数据管理特点如下：</p>
+<ol>
+<li>数据集成：把不同来源、格式、特点性质的数据在逻辑上或物理上有机地集中，是数据库管理系统的主要目的</li>
+<li>数据共享性高</li>
+<li>数据冗余小：冗余是受控的</li>
+<li>数据一致性</li>
+<li>数据独立性高：数据定义与使用数据的应用程序分离称为数据独立，数据库系统提供了两层数据独立，逻辑独立和物理独立</li>
+<li>实施统一管理与控制：数据的安全性、完整性、并发控制、故障恢复，即数据库保护</li>
+<li>减少应用程序开发与维护工作量</li>
+</ol>
+<h2 id="数据库系统的结构"><a href="#数据库系统的结构" class="headerlink" title="数据库系统的结构"></a>数据库系统的结构</h2><img src="/2019/08/17/数据库系统概述/databaseSystemStruct.jpg" title="数据库系统结构">
+<h3 id="三级模式结构"><a href="#三级模式结构" class="headerlink" title="三级模式结构"></a>三级模式结构</h3><ul>
+<li>三级体系结构和三级模式结构是不同的概念</li>
+<li>目前各个不同的数据库管理系统都遵循 <em>三级体系结构</em> 准则，即用户级、概念级、物理级</li>
+<li>意思是不同的数据库管理系统可以使用不同的数据库语言，支持不同的数据模型，运行在不同的操作系统</li>
+<li>但是这些数据库管理系统在体系结构上均采用 <em>三级模式结构</em> ，并提供 <em>两层映像</em><img src="/2019/08/17/数据库系统概述/three-levelModelSstructure.jpg" title="数据库系统的三级模式结构">
+
+</li>
+</ul>
+<h4 id="模式"><a href="#模式" class="headerlink" title="模式"></a>模式</h4><p>模式也称 <em>概念模式</em> 或 <em>逻辑模式</em> ，它是数据库中 <strong>全体数据</strong> 的 <strong>逻辑结构</strong> 和特征的描述。模式实际上是数据库数据在逻辑级上的视图，即 <em>概念视图</em> 。</p>
+<p>它不涉及任何数据库物理细节（文件组织、存取方法等），也与具体应用程序（开发工具、开发语言）无关，一个数据库只有一个模式。</p>
+<p>DBMS提供模式描述语言 <em>Schema DDL</em> ，从三方面定义模式：数据的逻辑结构、数据之间的联系、数据相关的安全性和完整性。</p>
+<h4 id="外模式"><a href="#外模式" class="headerlink" title="外模式"></a>外模式</h4><p>外模式也称 <em>子模式（Subschema）</em> 或 <em>用户模式</em> ，它是用户能够看见和使用的 <strong>局部数据</strong> 的 <strong>逻辑结构</strong> 和特征的描述，是局部数据的逻辑表示。外模式实际上是用于满足不同数据库用户的需求的数据视图，即 <em>用户视图</em> ，通常是模式的子集。</p>
+<p>外模式是保证数据库安全的重要措施，每个用户只能看见和访问与自己对应的外模式中的数据，一个数据库可以有多个外模式。</p>
+<p>DBMS提供子模式描述语言 <em>Subschema DDL</em> ，严格定义子模式。</p>
+<h4 id="内模式"><a href="#内模式" class="headerlink" title="内模式"></a>内模式</h4><p>内模式也称 <em>存储模式</em> ，它是数据库中数据 <strong>物理结构</strong> 和存储方式的描述，是数据在数据库内部的表示形式，DBA所见到的，即 <em>内部视图</em> 或 <em>存储视图</em> 。</p>
+<p>内模式不是最底层的物理层，而是数据库最低一级的逻辑描述，一个数据库只有一个内模式。</p>
+<p>内模式由内模式描述语言或存储模式描述语言来描述、定义。</p>
+<h4 id="数据独立性"><a href="#数据独立性" class="headerlink" title="数据独立性"></a>数据独立性</h4><ul>
+<li>模式独立于内/外模式，是数据库核心</li>
+<li>内模式依赖于模式，独立于外模式，独立于存储设备</li>
+<li>外模式面向应用程序，独立于内模式和存储设备</li>
+<li>应用层序依赖于外模式，独立于模式</li>
+</ul>
+<h4 id="两层映像"><a href="#两层映像" class="headerlink" title="两层映像"></a>两层映像</h4><p>所谓映像，就是一种对应规则，指出映像双方具体如何转换。</p>
+<p>外模式/模式映像：定义在各自的外模式中，一个模式对应多个外模式，每个外模式有一个外模式/模式映像，保证数据与程序的逻辑独立性。</p>
+<p>模式/内模式映像：定义在模式中，一个数据库只有一个模式，所以模式/内模式映像是唯一的，保证数据与程序的物理独立性。</p>
+<h3 id="数据库系统的运行与应用结构"><a href="#数据库系统的运行与应用结构" class="headerlink" title="数据库系统的运行与应用结构"></a>数据库系统的运行与应用结构</h3><h4 id="客户-服务器结构（C-S）"><a href="#客户-服务器结构（C-S）" class="headerlink" title="客户/服务器结构（C/S）"></a>客户/服务器结构（C/S）</h4><ol>
+<li>表示层：命令行、图形化界面管理工具、应用程序，完成与用户交互任务</li>
+<li>数据层：DBMS，负责数据管理</li>
+</ol>
+<p>客户端和服务器在一台计算机上的工作方式，称为 <em>单机方式</em> ；服务器被部署在网络中某台计算机上，客户端被安装在网络中至少一台计算机上的工作方式，称为 <em>网络方式</em> 。</p>
+<h4 id="浏览器-服务器结构（B-S）"><a href="#浏览器-服务器结构（B-S）" class="headerlink" title="浏览器/服务器结构（B/S）"></a>浏览器/服务器结构（B/S）</h4><ol>
+<li>表示层：用户操作和展示界面，通常由浏览器构成</li>
+<li>处理层：处理用户具体应用逻辑，与后台DBMS共同组成“胖服务器”</li>
+<li>数据层</li>
+</ol>
+<h2 id="数据模型"><a href="#数据模型" class="headerlink" title="数据模型"></a>数据模型</h2><ul>
+<li>模型是对现实世界特征的模拟和抽象表达</li>
+<li>数据模型是一种模型，它是模拟和抽象现实世界中数据特征的工具</li>
+</ul>
+<h3 id="数据特征与数据模型组成要素"><a href="#数据特征与数据模型组成要素" class="headerlink" title="数据特征与数据模型组成要素"></a>数据特征与数据模型组成要素</h3><ul>
+<li>数据两种特征：静态特征、动态特征</li>
+<li>数据的静态特征：数据的基本结构、数据间的联系、对数据取值范围的约束</li>
+<li>数据的动态特征：对数据可以进行符合一定规则的操作</li>
+<li>数据模型组成三要素：数据结构、数据操作、数据约束</li>
+<li>数据结构：描述静态特征，人们常按照数据结构类型来命名数据模型，如层次结构、网状结构、关系结构的对应数据模型分别为层次模型、网状模型、关系模型</li>
+<li>数据操作：描述动态特征，主要分为更新（插入、删除、修改）和检索</li>
+<li>数据约束：包括数据完整性约束、数据安全性约束和并发控制约束，同时包含了静态特征和动态特征</li>
+</ul>
+<h3 id="数据模型的分类"><a href="#数据模型的分类" class="headerlink" title="数据模型的分类"></a>数据模型的分类</h3><p>数据模型可以将现实世界的数据转换成计算机能够加工和处理的形式，应满足三方面要求：</p>
+<ol>
+<li>能较为真实地模拟现实世界</li>
+<li>容易为人们所理解</li>
+<li>便于在计算机上实现</li>
+</ol>
+<p>人们通常采用 <em>逐步抽象法</em> ，在不同抽象层面使用不同数据模型：</p>
+<ol>
+<li>将现实世界中客观对象抽象为（信息世界）某一种信息结构，这种信息结构不依赖于具体操作系统，也不依赖于具体DBMS，一种 <strong>概念模型</strong></li>
+<li>将概念模型转换为计算机（机器世界）中某一具体DBMS支持的 <strong>逻辑模型</strong> 和 <strong>物理模型</strong></li>
+</ol>
+<h4 id="概念层数据模型（概念模型-Conceptual-Model）"><a href="#概念层数据模型（概念模型-Conceptual-Model）" class="headerlink" title="概念层数据模型（概念模型, Conceptual Model）"></a>概念层数据模型（概念模型, Conceptual Model）</h4><ul>
+<li>也称为信息模型</li>
+<li>与具体操作系统无关，独立于任何DBMS，但容易向DBMS支持的逻辑数据模型转换</li>
+<li>主要用于数据库设计阶段，表示现实世界各事物及其联系</li>
+</ul>
+<p>概念模型用于信息世界建模，通常信息世界涉及到的基本概念如下：</p>
+<ol>
+<li>实体（Entity）：客观存在并可以相互区别的事物，如商品、学生（实际的事物），再如课程、比赛（抽象的概念）</li>
+<li>属性（Attribute）：实体具有的某种特征，如学生实体具有学号、姓名、出生日期等属性</li>
+<li>码/键（Key）：唯一标识实体的属性，如学生实体的键是学号</li>
+<li>域（Domain）：属性的取值范围，如学生实体的性别属性的域为男、女、第三性别</li>
+<li>实体型（Entity Type）：用实体名和属性名集合来描述同类实体，如，学生（学号、姓名、性别、出生日期），就是一个实体性</li>
+<li>实体集（Entity Set）：同类实体的集合，如，所有学生实体构成一个实体集</li>
+<li>联系（Relationship）：分为实体型的内部联系（实体各属性的联系，如学生实体中可以根据学号属性查询姓名属性）和外部联系（实体之间的联系，如一个班级实体包含多个学生实体，一个学生实体属于一个班级实体）</li>
+</ol>
+<p>概念模型最常用的表示方法是，P.P.S.Chen在1976年提出的 <em>实体-联系方法（Entity-Relationship Approach）</em> ，该方法使用 <em>E-R图（E-R Diagram）</em> 描述现实世界的概念模型，实体-联系方法也称为 <em>E-R模型（E-R Model）</em>，其图形含义如下：</p>
+<ol>
+<li>实体型，用矩形表示</li>
+<li>属性，用椭圆形表示</li>
+<li>联系，用菱形表示</li>
+</ol>
+<p>实体、属性、联系须使用无向边连接起来，连接联系时，还须在无向边上标注联系类型（1:1、1:N、M:N）</p>
+<img src="/2019/08/17/数据库系统概述/E-RDiagramExample.png" title="E-R图示例">
+
+<h4 id="逻辑层数据模型（逻辑模型，-Logical-Model）"><a href="#逻辑层数据模型（逻辑模型，-Logical-Model）" class="headerlink" title="逻辑层数据模型（逻辑模型， Logical Model）"></a>逻辑层数据模型（逻辑模型， Logical Model）</h4><p>任何DBMS都是基于某种逻辑数据模型，主要的逻辑模型有：</p>
+<ol>
+<li>层次模型（Hierarchial Model）：数据库系统最早使用的一种数据模型，其数据结构是一棵“有向树”，由一个没有父结点的根结点和其它有且仅有一个父结点的结点组成，每个结点对应一个实体集。比如组织机构。层次模型难以表达实体之间比较复杂的联系。</li>
+<li>网状模型（Network Mdel）：层次模型的扩展，允许结点拥有多个父结点，并且允许存在没有父节点的节点，网状模型虽可以方便表示实体间各种类型的联系，但结构复杂，实现的算法难以规范化。</li>
+<li>关系模型（Relational Model）：二维表结构表示实体间联系的模型，并以二维表形式组织数据。关系模型建立在严格的数学概念基础上，结构简单、清晰，用户易懂、易用，更高的数据独立性、更好的安全保密性，简化了开发工作和数据库建立工作。目前流行的商用数据库大多基于关系模型。</li>
+<li>面向对象模型（Object Oriented Model）：面向对象方法与数据库相结合所构成的数据模型，既是概念模型，又是逻辑模型。用面向对象观点来描述实体，表达能力丰富、对象可复用、维护方便，是数据库发展方向之一。</li>
+</ol>
+<h4 id="物理层数据模型（物理模型，-Physical-Model）"><a href="#物理层数据模型（物理模型，-Physical-Model）" class="headerlink" title="物理层数据模型（物理模型， Physical Model）"></a>物理层数据模型（物理模型， Physical Model）</h4><ul>
+<li>描述数据在存储介质上的组织结构，是逻辑模型的物理实现，每种逻辑模型在是实现时都有对应的物理模型</li>
+<li>物理模型是数据库最底层的抽象</li>
+<li>物理模型的设计目标是提高数据库性能和有效利用存储空间</li>
+<li>物理数据结构向用户屏蔽，用户不必了解其细节</li>
+</ul>
+<h2 id="附记"><a href="#附记" class="headerlink" title="附记"></a>附记</h2><p>重点：基本概念、三级模式、数据模型</p>
+<p>不得不说，如果让零经验的初学者学习这部分理论的话，相信大部分初学者都会说“入门到放弃”，很多概念都有点“简单问题复杂化”了，比如三层模式中，前者独立后者，后者却又依赖前者…，徒劳的增加记忆内容，说到底，只有实际用到过的东西，才能真正理解它的定义。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-08-19");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2019-08-17T12:54:02.000Z" itemprop="datePublished">2019-08-17</time>
+
+    , Updated at&nbsp;<time datetime="2019-08-18T16:40:36.200Z" itemprop="dateModified">2019-08-19</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/数据库系统原理/'>数据库系统原理</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/数据库/" rel="tag">#&nbsp;数据库</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/07/05/在Ubuntu-18-04上快速搭建MySQL/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">在Ubuntu 18.04上快速搭建MySQL</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://blog.yinchenxu.work">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
