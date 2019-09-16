@@ -1,0 +1,1695 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>关系数据库 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="概述
+目前应用最广泛的数据库
+数据的逻辑模型是 关系模型">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 数据库">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://blog.yinchenxu.work">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="关系数据库 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://blog.yinchenxu.work/2019/08/28/关系数据库/">
+<meta property="og:image" content="https://blog.yinchenxu.work/img/suka-favicon.ico">
+
+<meta property="og:description" content="概述
+目前应用最广泛的数据库
+数据的逻辑模型是 关系模型">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-08-27T16:09:30.000Z">
+    <meta property="article:modified_time" content="2019-08-27T16:09:30.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", 数据库"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.yinchenxu.work/2019/08/28/关系数据库/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.yinchenxu.work/2019/08/28/关系数据库/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.yinchenxu.work/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.yinchenxu.work/2019/08/28/关系数据库/"
+    },
+    "headline": "关系数据库 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-08-27T16:09:30.000Z",
+    "dateModified": "2019-09-09T17:28:00.023Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.yinchenxu.work/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 数据库",
+    "description": "概述
+目前应用最广泛的数据库
+数据的逻辑模型是 关系模型"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://blog.yinchenxu.work&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://blog.yinchenxu.work&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work&title=关系数据库" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=关系数据库&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.yinchenxu.work&text=关系数据库" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4klEQVR42u3a0W7DIAxG4b7/S29XlaYO+z9UuQjO4aZTm4UvkgPY8Pq5YXuJEiVK1AL1atrq9/d3q8/VPWk/omahlkFXdPT5d9Xh531IP6JmoapgXqFIZ9V1XT+inoGqgrv6n9U1okQRzO4gK+p5qG7Q6yZfMnBevkoQdXtUShyu+rw0mxF1W1QsOsCA7gbby6suom6N6hZl7eQJiiLpOjyiizoK1SWatHhRTbjVxF29DKJmotIguLvISw8jah4qJZZkgk6Lw/SAouahUpGCFMB2CrMo0EUdi0pBTYsXdBJv+xM1BpU2gipA9z1JHP69YKLGocggmgZOUrjFK09RR6O+OQCRkte0mRkDXdSRKJosko7TQYlY+BA1AkUKZ2nQ7AK5C3q08hR1HCoV8NOCf+cwWCqgiJqBqm5MNqTJYo4EvqhZqG8SgZ1DEWmjQNQ8VFekv6KITx5I1EwUOUBDC2k7D9Qe6hJ1JIpMuN1BVJKoppdH1CxUailg08GJLqmNGbKoI1E0yLtFIdlUQoOzqDEoEqA7RdtUhMXZjKijUTuTMCmS0Y3t9qSZqJEoepgiLeLQ5C3qMaiUHJCkgmxcipqFogv+LngJFm9CijoaRYsbu5tLtOAmahbqTk2UKFGi/rRfktgfrpNMHhcAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">关系数据库</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-08-28</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/数据库系统原理/">数据库系统原理</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=关系数据库&url=https://blog.yinchenxu.work/2019/08/28/关系数据库/&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=关系数据库&url=https://blog.yinchenxu.work/2019/08/28/关系数据库/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work/2019/08/28/关系数据库/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work/2019/08/28/关系数据库/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work/2019/08/28/关系数据库/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work/2019/08/28/关系数据库/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.yinchenxu.work/2019/08/28/关系数据库/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB4klEQVR42u3a0W7DIAxG4b7/S29XlaYO+z9UuQjO4aZTm4UvkgPY8Pq5YXuJEiVK1AL1atrq9/d3q8/VPWk/omahlkFXdPT5d9Xh531IP6JmoapgXqFIZ9V1XT+inoGqgrv6n9U1okQRzO4gK+p5qG7Q6yZfMnBevkoQdXtUShyu+rw0mxF1W1QsOsCA7gbby6suom6N6hZl7eQJiiLpOjyiizoK1SWatHhRTbjVxF29DKJmotIguLvISw8jah4qJZZkgk6Lw/SAouahUpGCFMB2CrMo0EUdi0pBTYsXdBJv+xM1BpU2gipA9z1JHP69YKLGocggmgZOUrjFK09RR6O+OQCRkte0mRkDXdSRKJosko7TQYlY+BA1AkUKZ2nQ7AK5C3q08hR1HCoV8NOCf+cwWCqgiJqBqm5MNqTJYo4EvqhZqG8SgZ1DEWmjQNQ8VFekv6KITx5I1EwUOUBDC2k7D9Qe6hJ1JIpMuN1BVJKoppdH1CxUailg08GJLqmNGbKoI1E0yLtFIdlUQoOzqDEoEqA7RdtUhMXZjKijUTuTMCmS0Y3t9qSZqJEoepgiLeLQ5C3qMaiUHJCkgmxcipqFogv+LngJFm9CijoaRYsbu5tLtOAmahbqTk2UKFGi/rRfktgfrpNMHhcAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关系数据模型"><span class="post-toc-number">2.</span> <span class="post-toc-text">关系数据模型</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系数据结构"><span class="post-toc-number">2.1.</span> <span class="post-toc-text">关系数据结构</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系操作集合"><span class="post-toc-number">2.2.</span> <span class="post-toc-text">关系操作集合</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#基本的关系操作"><span class="post-toc-number">2.2.1.</span> <span class="post-toc-text">基本的关系操作</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关系数据语言的分类"><span class="post-toc-number">2.2.2.</span> <span class="post-toc-text">关系数据语言的分类</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关系代数"><span class="post-toc-number">2.2.3.</span> <span class="post-toc-text">关系代数</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#传统的集合运算"><span class="post-toc-number">2.2.3.1.</span> <span class="post-toc-text">传统的集合运算</span></a></li><li class="post-toc-item post-toc-level-5"><a class="post-toc-link" href="#专门的关系运算"><span class="post-toc-number">2.2.3.2.</span> <span class="post-toc-text">专门的关系运算</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系模型的完整性约束"><span class="post-toc-number">2.3.</span> <span class="post-toc-text">关系模型的完整性约束</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关系模型的三类完整性约束"><span class="post-toc-number">2.3.1.</span> <span class="post-toc-text">关系模型的三类完整性约束</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#关系模型完整性约束的检验"><span class="post-toc-number">2.3.2.</span> <span class="post-toc-text">关系模型完整性约束的检验</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关系数据库的规范化理论"><span class="post-toc-number">3.</span> <span class="post-toc-text">关系数据库的规范化理论</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#函数依赖与关键字"><span class="post-toc-number">3.0.1.</span> <span class="post-toc-text">函数依赖与关键字</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#范式与关系范式化过程"><span class="post-toc-number">3.0.2.</span> <span class="post-toc-text">范式与关系范式化过程</span></a></li></ol></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#附记"><span class="post-toc-number">4.</span> <span class="post-toc-text">附记</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><ul>
+<li>目前应用最广泛的数据库</li>
+<li>数据的逻辑模型是 <em>关系模型</em></li>
+<li>数据库操作建立在关系代数基础上</li>
+</ul>
+<p>时间轴：</p>
+<p>· 20世纪70年代末，关系方法的理论研究和系统软件（IBM 的 SystemR 和 SQL/DS）研制取得重大突破</p>
+<p>· 20世纪80年代，关系模型逐渐取代网状模型和层次模型</p>
+<h2 id="关系数据模型"><a href="#关系数据模型" class="headerlink" title="关系数据模型"></a>关系数据模型</h2><p>关系模型三要素：关系数据结构、关系操作集合、关系完整性约束。</p>
+<h3 id="关系数据结构"><a href="#关系数据结构" class="headerlink" title="关系数据结构"></a>关系数据结构</h3><p>关系数据模型仅包含单一数据结构：关系。以学生表为例：</p>
+<table>
+<thead>
+<tr>
+<th>学号</th>
+<th>姓名</th>
+<th>性别</th>
+<th>班级</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>001</td>
+<td>张三</td>
+<td>男</td>
+<td>A</td>
+</tr>
+<tr>
+<td>002</td>
+<td>李四</td>
+<td>女</td>
+<td>A</td>
+</tr>
+<tr>
+<td>003</td>
+<td>小明</td>
+<td>女</td>
+<td>B</td>
+</tr>
+</tbody></table>
+<ol>
+<li>表（Table）==关系（Relation）：是一个二维数据结构，由表名和各列、各行数据组成，每个表有唯一表名每一行描述一条具体记录值；关系（表）有三种类型，即，<em>基本关系（基表）</em>、<em>查询表</em>、<em>视图表</em>，分别代表实际存在的表、查询结果对应的表、基表或其他视图之上建立的虚表（没有实际物理记录），<strong>表是内模式，视图是外模式</strong></li>
+<li>列（Column）==字段（Field）==属性（Attribute）：每一列表示实体的一个属性，具有相同数据类型。列的个数称为关系的<em>元（或度）<em>，列的值称为</em>属性值<em>，属性值的取值范围称为</em>值域</em></li>
+<li>行（Row）==元组（Tuple）==记录（Record）</li>
+<li>分量（Component）：元组中的一个属性值，如元组(002, 李四, 女, A)的每一个属性值，002、李四、女、A，都是这个元组的分量</li>
+<li>码（或键, Key）：能够用来唯一标识关系的每个元组的属性或属性组（任意两个元组在该属性或属性组上值的组合都不相同）</li>
+<li>超码（或超键, Super Key）：在关系的一个码（唯一标识的属性组）中移除某个属性，这个属性组仍是关系的码，这样码（或键）称为该关系的超码（或超键）；<strong>每个关系至少存在一个超码，即该关系所有属性的集合，也是该关系最大的超码</strong>；如（学号, 姓名, 性别, 班级)、(学号、 姓名)都是学生表的超码</li>
+<li>候选码（或候选键, Candidate Key）：在关系的一个码中，不能移除任何一个属性，否则这个属性组就不是关系的码，这样的码称为该关系的候选码（或候选键）；所以，<strong>候选码是关系最小的超码</strong>，如学号是学生表的候选码，(学号, 课程号)是成绩表的候选码</li>
+<li>主码（或主键, Primary Key）：若干候选码中，被指定用来唯一标识元组的一个候选码  </li>
+<li>全码（或全键, All-Key）：关系的主键是这个关系模式的所有属性集合</li>
+<li>主属性（Primary Attribute）：候选码中的任何一个属性</li>
+<li>非主属性（Nonprimary Attribute）：不在候选码中的属性</li>
+<li>外码（或外键, Foreign Key）：不是所在关系的主键或候选键，而是另一关系的主键或候选键的属性（属性组）</li>
+<li>参照关系（或从关系, Referencing Relation）：外键相关联的两个关系中，外键所在的关系</li>
+<li>被参照关系（或主关系, Referenced Relation）：外键相关联的两个关系中，外键作为主键的关系</li>
+<li>域（Domain）：属性的取值范围，如性别，域为“男”、“女”、“第三性别”</li>
+<li>数据类型（Data Type）：如姓名的类型应为字符型varchar   </li>
+<li>关系模式（Relation Schema）：数据模型的“型”是指某一类数据的结构和属性、“值”是指型的具体赋值，而关系数据库的“型”是指关系模型、“值”是指关系，即 <strong>关系模式是对关系的描述</strong> ；所以关系模式是静态的、稳定的，关系是动态的、变化的， <strong>关系是关系模式在某一时刻的状态或内容</strong> ，如学生表对应的关系模式（表结构）通常是不变的，但由于新生入学，毕业生离校，其内容会经常发生变化。</li>
+<li>关系数据库（Relation Database）：关系模型作为数据的逻辑模型，关系作为数据组织方式的一类数据库。</li>
+</ol>
+<p>关系数据库对关系的限定：</p>
+<ol>
+<li>每个属性都是不可分解的，不允许表中有表</li>
+<li>每个关系仅有一种关系模式（属性的类型和个数固定）</li>
+<li>属性必须命名，同意关系模式中属性名不能相同</li>
+<li>不允许出现候选键值完全相同的元组</li>
+<li>元组顺序和属性顺序可任意交换 </li>
+</ol>
+<h3 id="关系操作集合"><a href="#关系操作集合" class="headerlink" title="关系操作集合"></a>关系操作集合</h3><h4 id="基本的关系操作"><a href="#基本的关系操作" class="headerlink" title="基本的关系操作"></a>基本的关系操作</h4><p>关系模型常用的关系操作包括两大部分：<em>查询（Query）</em>操作、<em>插入（Insert）</em>、<em>删除（Delete）</em>和<em>修改（Update）</em>操作。</p>
+<p>查询是关系操作最主要的部分，可以分为：</p>
+<img src="/2019/08/28/关系数据库/relation-operate.jpg" title="关系操作和查询的基本操作">
+
+<p>关系操作的对象和结果都是集合，因此也被称为<em>一次一集合（Set-at-a-time）</em>。</p>
+<h4 id="关系数据语言的分类"><a href="#关系数据语言的分类" class="headerlink" title="关系数据语言的分类"></a>关系数据语言的分类</h4><p>关系语言的特点（优点）是高度非过程化：用户不必建立特殊的存取路径，存取路径由DBMS优化机制选择；不必使用循环和递归完成数据的重复操作。</p>
+<p>关系数据语言分为三类：关系代数语言、关系演算语言、SQL语言</p>
+<img src="/2019/08/28/关系数据库/relation-operate-ability.jpg" title="关系操作能力分类关系数据语言">
+
+<ul>
+<li>关系代数、元组关系演算、域关系演算均是抽象查询语言，与数据库中实现的实际查询语言不同，实际查询语言除了提供关系代数或关系演算之外，还提供了如聚合函数、关系赋值、算术运算等附加功能</li>
+<li>三类语言的共同特点是：完备的表达能力、非过程化操作集合、功能强、既能独立使用也可以嵌入高级语言使用</li>
+</ul>
+<h4 id="关系代数"><a href="#关系代数" class="headerlink" title="关系代数"></a>关系代数</h4><ul>
+<li><p>关系代数是以集合代数为基础发展起来的一种抽象的关系操作语言。</p>
+</li>
+<li><p>关系运算操作包含三要素：操作符 (作用于)-&gt; 操作对象 (得到)-&gt; 操作结果，</p>
+</li>
+<li><p>运算（操作）对象是关系，运算（操作）结果亦为关系。</p>
+</li>
+</ul>
+<p>关系代数的运算符：</p>
+<table>
+    <tr>
+        <th colspan="2" style="text-align: center;">运算符</th>
+        <th>含义</th>
+    </tr>
+    <tr>
+        <td rowspan="4">集合运算符</td>
+        <td>∪</td>
+        <td>并</td>
+    </tr>
+    <tr>
+        <td>−</td>
+        <td>差</td>
+    </tr>
+    <tr>
+        <td>∩</td>
+        <td>交</td>
+    </tr>
+    <tr>
+        <td>×</td>
+        <td>笛卡尔积</td>
+    </tr>
+    <tr>
+        <td rowspan="4">专门的关系运算符</td>
+        <td>σ</td>
+        <td>选择</td>
+    </tr>
+    <tr>
+        <td>Π/td>
+        </td><td>投影</td>
+    </tr>
+    <tr>
+        <td>⋈</td>
+        <td>连接</td>
+    </tr>
+    <tr>
+        <td>÷</td>
+        <td>除</td>
+    </tr>
+</table>
+
+<p>辅助专门的关系运算符的运算符：</p>
+<p>比较操作符：＞、≥、＜、≤、＝、≠</p>
+<p>逻辑运算符：∧(与)、∨(或)、┐(非)</p>
+<p>关系代数操作经过有限次复合的表达式称为<em>关系代数表达式</em>，是一种抽象的数据库操作语言，按照运算符的不同，关系代数的操作可分为传统的集合运算与专门的关系运算。</p>
+<h5 id="传统的集合运算"><a href="#传统的集合运算" class="headerlink" title="传统的集合运算"></a>传统的集合运算</h5><p>集合运算是<strong>二目运算</strong>，将关系看成元组的集合，从行的角度进行运算。</p>
+<p>Table: Students_1</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>晓明</td>
+<td>A</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>徐昆</td>
+<td>B</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p>Table: Students_2</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901004</td>
+<td>刘能</td>
+<td>C</td>
+</tr>
+<tr>
+<td>901005</td>
+<td>宝强</td>
+<td>D</td>
+</tr>
+<tr>
+<td>901001</td>
+<td>晓明</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p>(1). 并（Union）</p>
+<p>R3 = R1 ∪ R2</p>
+<p>R3由关系R1和R2所有不同元组（去掉重复元组后的所有元组）组成，R1和R2字段的个数相同，字段的值域相同。</p>
+<p>Students_1 ∪ Students_2的结果：</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>晓明</td>
+<td>A</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>徐昆</td>
+<td>B</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>A</td>
+</tr>
+<tr>
+<td>901004</td>
+<td>刘能</td>
+<td>C</td>
+</tr>
+<tr>
+<td>901005</td>
+<td>宝强</td>
+<td>D</td>
+</tr>
+</tbody></table>
+<p>(2). 差（Difference）</p>
+<p>R3 = R1 − R2</p>
+<p>R3由属于R1，但不属于R2的元组组成，R1和R2字段的个数相同，字段的值域相同。</p>
+<p>Students_1 − Students_2的结果：</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901002</td>
+<td>徐昆</td>
+<td>B</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p>(3). 交（Intersection）</p>
+<p>R3 = R1 ∩ R2，也可以用差运算表示，R1 ∩ R2 = R1 − (R1 − R2)</p>
+<p>R3由既属于R1，又属于R2的元组组成，R1和R2字段的个数相同，字段的值域相同。</p>
+<p>Students_1 ∩ Students_2的结果：</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901003</td>
+<td>小六</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p>(4). 笛卡尔积（Cartesian Product）</p>
+<p>R3 = R1 × R2</p>
+<p>R3是由R1和R2所有元组连接而成的新关系，假设R1为m元关系（m个字段），R2为n元关系，则R3为(m+n)元关系，且R3中元组前m个分量（元）是R1的一个元组，后n个分量是R2的一个元组，例：</p>
+<p>Table: Students</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>SName</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>晓明</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>徐昆</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+</tr>
+</tbody></table>
+<p>Table: Course</p>
+<table>
+<thead>
+<tr>
+<th>CNo</th>
+<th>CName</th>
+<th>CRoom</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>1</td>
+<td>数据库</td>
+<td>C5-201</td>
+</tr>
+<tr>
+<td>2</td>
+<td>Java</td>
+<td>C5-307</td>
+</tr>
+</tbody></table>
+<p>Students × Course的结果：</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>SName</th>
+<th>CNo</th>
+<th>CName</th>
+<th>CRoom</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>晓明</td>
+<td>1</td>
+<td>数据库</td>
+<td>C5-201</td>
+</tr>
+<tr>
+<td>901001</td>
+<td>晓明</td>
+<td>2</td>
+<td>Java</td>
+<td>C5-307</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>徐昆</td>
+<td>1</td>
+<td>数据库</td>
+<td>C5-201</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>徐昆</td>
+<td>1</td>
+<td>Java</td>
+<td>C5-307</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>1</td>
+<td>数据库</td>
+<td>C5-201</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>1</td>
+<td>Java</td>
+<td>C5-307</td>
+</tr>
+</tbody></table>
+<h5 id="专门的关系运算"><a href="#专门的关系运算" class="headerlink" title="专门的关系运算"></a>专门的关系运算</h5><p>专门的关系运算从行和列的角度进行运算。</p>
+<img src="/2019/08/28/关系数据库/Specialized-relational-operations.jpg" title="专门的关系运算">
+
+<p>(1). 选择（Select）</p>
+<img src="/2019/08/28/关系数据库/Select.png" title="选择">
+
+<p>其中，F为条件表达式，R为指定的被运算关系名。</p>
+<p>选择运算是从指定关系中选取满足条件的若干元组，由这些元组组成一个新关系，其形式为：</p>
+<blockquote>
+<p>SELECT 关系名 WHERE 条件</p>
+</blockquote>
+<p>其中<em>条件</em>是由常数、属性名和比较操作符、逻辑运算符组成的表达式。</p>
+<p>例如，找出Students_1里所有A班同学 </p>
+<blockquote>
+<p>SELECT Students_1 WHERE Class = ‘A’</p>
+</blockquote>
+<p>其运算结果为</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>晓明</td>
+<td>A</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>小六</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p>(2).投影（Projection）</p>
+<img src="/2019/08/28/关系数据库/Projection.png" title="投影">
+
+<p>其中，R为被运算关系名，A为属性序列。</p>
+<p>投影运算是从指定关系中选取指定的（若干）属性名，组成一个新关系，其形式为：</p>
+<blockquote>
+<p>PROJECTION 关系名 (属性名1, 属性名2, …, 属性名n)</p>
+</blockquote>
+<p>例如找出Students_1班级情况</p>
+<blockquote>
+<p>PROJECTION Students_1 (NO, Class)</p>
+</blockquote>
+<p>其运算结果为</p>
+<table>
+<thead>
+<tr>
+<th>NO</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>901001</td>
+<td>A</td>
+</tr>
+<tr>
+<td>901002</td>
+<td>B</td>
+</tr>
+<tr>
+<td>901003</td>
+<td>A</td>
+</tr>
+</tbody></table>
+<p><strong>投影运算形成的新关系不包含重复元组</strong></p>
+<p>(3).连接（Join）</p>
+<p>连接也称为θ连接</p>
+<img src="/2019/08/28/关系数据库/Join.png" title="连接">
+
+<p>其中，R和S代表两个不同的关系，i和j分别代表R的第i列和S的第j列，θ代表比较运算符。</p>
+<p>从笛卡尔积R×S中选取i属性与j属性上满足θ的元组，这些元组组成一个新的关系，其形式为：</p>
+<blockquote>
+<p>JOIN 关系名1 AND 关系名2 WHERE 条件</p>
+</blockquote>
+<p><em>等值连接</em>和<em>自然连接</em>是连接操作中最常用的两种链接：</p>
+<ol>
+<li><p>等值连接是θ为“=”的连接操作，它从R×S中选取i和j的属性值相等那元组。</p>
+</li>
+<li><p>自然连接是一种特殊的等值连接，它要求两个关系中进行比较的分量必须是相同的属性组，并且在结果中把属性重复的属性去掉。</p>
+</li>
+</ol>
+<p>等值连接是从行的角度进行运算，但自然连接还需取消重复列，所以<strong>自然连接是同时从行和列的角度进行运算</strong>。</p>
+<p>自然连接用于构造新关系，投影和选择用于分解关系。</p>
+<p><strong>一般地，如果两个关系没有公共属性，它们的自然连接就变成笛卡尔积</strong>。</p>
+<p>Table: Students_3 S3</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Name</th>
+<th>Class</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902005</td>
+<td>Alex</td>
+<td>C</td>
+</tr>
+<tr>
+<td>902006</td>
+<td>Bob</td>
+<td>C</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Carey</td>
+<td>D</td>
+</tr>
+<tr>
+<td>902008</td>
+<td>Dick</td>
+<td>D</td>
+</tr>
+</tbody></table>
+<p>Table: Courses_3 C3</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902005</td>
+<td>Spring Boot</td>
+</tr>
+<tr>
+<td>902006</td>
+<td>ASP.NET Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>EF Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Spring Boot</td>
+</tr>
+<tr>
+<td>902009</td>
+<td>MyBatis</td>
+</tr>
+</tbody></table>
+<p>S3⋈C3 S3.No = C3.No 等值连接：</p>
+<table>
+<thead>
+<tr>
+<th>R.No</th>
+<th>Name</th>
+<th>Class</th>
+<th>S.No</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902005</td>
+<td>Alex</td>
+<td>C</td>
+<td>902005</td>
+<td>Spring Boot</td>
+</tr>
+<tr>
+<td>902006</td>
+<td>Bob</td>
+<td>C</td>
+<td>902006</td>
+<td>ASP.NET Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Carey</td>
+<td>D</td>
+<td>902007</td>
+<td>EF Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Carey</td>
+<td>D</td>
+<td>902007</td>
+<td>Spring Boot</td>
+</tr>
+</tbody></table>
+<p>S3⋈C3 自然连接：</p>
+<table>
+<thead>
+<tr>
+<th>No</th>
+<th>Name</th>
+<th>Class</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902005</td>
+<td>Alex</td>
+<td>C</td>
+<td>Spring Boot</td>
+</tr>
+<tr>
+<td>902006</td>
+<td>Bob</td>
+<td>C</td>
+<td>ASP.NET Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Carey</td>
+<td>D</td>
+<td>EF Core</td>
+</tr>
+<tr>
+<td>902007</td>
+<td>Carey</td>
+<td>D</td>
+<td>Spring Boot</td>
+</tr>
+</tbody></table>
+<p>(4). 除（Division）</p>
+<p>R ÷ S</p>
+<p>假设被除关系R为m元关系，除关系S为n元关系，则运算结果为一个m-n元关系。</p>
+<p>先将m-n列的值分组（去重），检查每个组的其它列<strong>是否包含S的全部元组</strong>，若包含，则该组的值作为商关系的一个元组。</p>
+<p><strong>除法是笛卡尔乘积的映射</strong>。</p>
+<p>Table: Student_Course</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+<th>Course</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alex</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Alex</td>
+<td>C#</td>
+</tr>
+<tr>
+<td>Bob</td>
+<td>C#</td>
+</tr>
+<tr>
+<td>Carey</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Dick</td>
+<td>Java</td>
+</tr>
+<tr>
+<td>Dick</td>
+<td>C#</td>
+</tr>
+</tbody></table>
+<p>Table: Course</p>
+<table>
+<thead>
+<tr>
+<th>Course</th>
+<th>Room</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Java</td>
+<td>B6-101</td>
+</tr>
+<tr>
+<td>C#</td>
+<td>B6-205</td>
+</tr>
+</tbody></table>
+<p>Student_Course ÷ Course（查询出选修了所有课程的学生）的结果：</p>
+<table>
+<thead>
+<tr>
+<th>Name</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>Alex</td>
+</tr>
+<tr>
+<td>Dick</td>
+</tr>
+</tbody></table>
+<h3 id="关系模型的完整性约束"><a href="#关系模型的完整性约束" class="headerlink" title="关系模型的完整性约束"></a>关系模型的完整性约束</h3><ul>
+<li><p>数据完整性包括两方面：与现实世界中应用需求的数据的正确性、相容性和一致性；数据库内数据之间的正确性、相容性和一致性。</p>
+</li>
+<li><p>数据完整性由完整性规则来定义，关系模型的完整性规则是对关系的某种约束，也称为完整性约束，它保证用户操作数据库时不会破坏数据完整性。</p>
+</li>
+</ul>
+<img src="/2019/08/28/关系数据库/Relational-model-Integrity-Constraints.jpg" title="关系模型的完整性约束">
+
+<h4 id="关系模型的三类完整性约束"><a href="#关系模型的三类完整性约束" class="headerlink" title="关系模型的三类完整性约束"></a>关系模型的三类完整性约束</h4><p>(1). 实体完整性约束（Entity Integrity Constraint）</p>
+<p>实体完整性约束是指关系的主属性不能为空（NULL），关系数据库系统中，实体完整性是指实际存储数据的表中，<strong>主键不能重复也不能取NULL值</strong>。</p>
+<p>(2). 参照完整性约束（Referential Integrity Constraint）</p>
+<p>参照完整性约束就是定义外键与主键之间的引用规则：若属性（属性组）F是关系R的外键，与关系S的主键K相对应，则R中每个字段在F上的值只允许两种可能，要么为NULL，要么等于S中某个字段在K上的值。</p>
+<p>(3). 用户定义完整性约束（User-defined Integrity Constraint）</p>
+<p>用户定义完整性约束是针对某一应用环境的完整性约束条件，这类完整性规则可在建立数据表时定义，也可在程序中进行检查和控制。</p>
+<h4 id="关系模型完整性约束的检验"><a href="#关系模型完整性约束的检验" class="headerlink" title="关系模型完整性约束的检验"></a>关系模型完整性约束的检验</h4><p>(1). 执行插入操作时</p>
+<p>首先检查实体完整性约束：检查插入行主键的值是否已经存在，若不存在，再检查插入行主键的值是否为NULL，若不为NULL，继续执行</p>
+<p>然后检查参照关系完整性约束：如果向被参照关系插入，不考虑此约束，如果向参照关系插入，检查插入行的外键值是否在参照关系的主键值中存在，若存在，继续执行，如不存在，可将外键值改为NULL值（假设外键允许为NULL）再继续执行</p>
+<p>最后检查用户定义完整性约束</p>
+<p>(2). 执行删除操作时</p>
+<p>检查参照关系完整性约束：如果删除被参照关系中的行，检查被删除行的主键值时候正在被对应的参照关系引用，若未被引用，执行删除操作，若正在被引用，有三种可能的做法：</p>
+<ol>
+<li>拒绝删除</li>
+<li>空值删除：将参照关系对应的外键改为NULL（假设外键允许为NULL）</li>
+<li>级联删除：将参照关系对应的外键所在的行删除</li>
+</ol>
+<p>(3). 执行更新操作时</p>
+<p>可以看成先执行删除操作，再执行插入操作</p>
+<h2 id="关系数据库的规范化理论"><a href="#关系数据库的规范化理论" class="headerlink" title="关系数据库的规范化理论"></a>关系数据库的规范化理论</h2><p>关系模式（Relation Schema）：关系的描述，用于说明数据库中有哪些表，表有那些列，通过这些结构，设计出一个符合功能需求的数据库结构。</p>
+<p>关系是元组的集合，因此关系模式必须指出这个元组集合的结构，即它由哪些属性构成，这些属性来自哪些域，以及属性与域之间的<em>映象</em>关系。</p>
+<p>关系数据库的规范化理论：</p>
+<ol>
+<li>是关系数据库设计的理论依据</li>
+<li>研究个属性之间的依赖关系对关系模式性能影响</li>
+<li>提供判断关系模式优劣的理论标准</li>
+</ol>
+<p>关系模式可能存在的冗余和异常问题：</p>
+<ol>
+<li>数据冗余：同一数据被反复存储</li>
+<li>更新异常：数据冗余导致更新同一数据时需修改多处</li>
+<li>插入异常：数据不能执行插入操作，比如该关系模式中，一部分<em>关键字</em>为空</li>
+<li>删除异常：不应该删除的数据被删除，假设有一个关系模式供应商(供应商名, 地址, 货物名称)，删除了某个供应商的所有货物的同时也删除了这个供应商的信息</li>
+</ol>
+<p>解决上述问题需要引入<em>数据依赖</em>，数据依赖是作为关系模式取值的一种约束条件，任何一个关系都必须满足，其中两种重要类型的数据依赖：函数依赖（Functional Dependency, FD）和多值依赖（Multi-Valued Dependency, MVD）。</p>
+<h4 id="函数依赖与关键字"><a href="#函数依赖与关键字" class="headerlink" title="函数依赖与关键字"></a>函数依赖与关键字</h4><p>函数依赖是指关系中属性间的对应关系</p>
+<ul>
+<li><p>定义一：函数依赖</p>
+<p>关系R中，属性X的每一个值，属性Y只有唯一值与之对应，则称<strong>X 函数决定 Y，或Y 函数依赖 于X</strong>，记作<strong>X→Y</strong>，其中X称为<em>决定因素</em>。</p>
+</li>
+</ul>
+<p>函数依赖根据性质不同可分为完全函数依赖、部分函数依赖和传递函数依赖。</p>
+<ul>
+<li><p>定义二：完全函数依赖</p>
+<p>X、Y为关系R的属性集，若<strong>X 函数决定 Y</strong>，且对X中的任何真子集（A包含于B，且A不等于B，则集合A是集合B的真子集）X‘满足<strong>X’ 不函数决定 Y</strong>，则称<strong>Y 完全函数依赖 于X</strong>。</p>
+<p>例如，学生成绩的关系模式(SNO, CNO, GRADE)，学号、课程号、成绩，在该关系中，函数依赖 (SNO, CNO)→GRADE 为完全函数依赖，因为SNO和CNO都不能单独 函数决定 GRADE，SNO和CNO为主属性。</p>
+</li>
+<li><p>定义三：部分函数依赖</p>
+<p>X、Y为关系R的属性集，若<strong>X 函数决定 Y</strong>，且X中存在<strong>一个真子集X‘满足X’ 函数决定 Y</strong>，则称<strong>Y 部分函数依赖于 X</strong>。</p>
+</li>
+<li><p>定义四：传递函数依赖</p>
+<p>X、Y、Z为关系R的属性集，若<strong>X 函数决定 Y</strong>，<strong>但Y 不函数决定 X，而 函数决定 Z</strong>，<strong>则有X 函数决定 Z</strong>，称为<strong>Z 传递函数依赖 于X</strong>。</p>
+<p>例如，图书出版社的关系模式(BNO, PNAME, PADDRESS)，书号、出版社名、出版社地址，一个书号只能为一家出版社出版，但一家出版社可以出版许多书号，所以该关系存在依赖：BNO→PNAME &amp; PNAME→PADDRESS，但 PNAME !→ BNO，所以PNAME→BNO为传递函数依赖。</p>
+</li>
+<li><p>定义五：关键字</p>
+<p>关系R中，U为全部属性集合，X为U的子集（A包含于B，且A可能等于B，则集合A是集合B的子集），若X 完全函数依赖 于U，则X为R的一个<em>候选关键字</em>。</p>
+<p>一个关系可能存在多个候选关键字，通常选择其中之一作为<em>主键</em>，候选关键字中包含的属性称为<em>主属性</em>，不包含在内的属性称为<em>非主属性</em>。</p>
+</li>
+</ul>
+<h4 id="范式与关系范式化过程"><a href="#范式与关系范式化过程" class="headerlink" title="范式与关系范式化过程"></a>范式与关系范式化过程</h4><ul>
+<li>范式是符合某一种级别的关系模式的集合，关系数据库中的关系必须满足一定的要求，满足不同程度要求的为不同范式</li>
+<li>满足最低要求的范式是第一范式（1NF），进一步满足更多要求的称为第二范式（2NF），以次类推</li>
+<li>一般说来，数据库只需满足第三范式（3NF）</li>
+<li>低一级范式通过<em>模式分解（Schema Decomposition）<em>，转换为若干高一级别的关系模式的集合，这个过程叫</em>范式化（Normalization）</em></li>
+<li>关系数据库所有关系结构都必须是范式化的（即至少是第一范式的）</li>
+</ul>
+<p>(1). 第一范式</p>
+<p>关系R中每个列与行交点处的取值都是不可再分的基本元素，则R为第一范式。</p>
+<p>即：不满足第一范式的关系为非规范关系，如下关系：</p>
+<table>
+    <tr>
+        <th>SNO</th>
+        <th>CNO</th>
+        <th>CNAME</th>
+        <th>TNAME</th>
+        <th>TPLACE</th>
+        <th>GRADE</th>
+    </tr>
+    <tr>
+        <td>902010</td>
+        <td>C01</td>
+        <td>MySQL</td>
+        <td>蔡老师</td>
+        <td>D1-101</td>
+        <td>70</td>
+    </tr>
+    <tr>
+        <td rowspan="2">902011</td>
+        <td>C01</td>
+        <td>MySQL</td>
+        <td>蔡老师</td>
+        <td>D1-101</td>
+        <td>80</td>
+    </tr>
+    <tr>
+        <td>C02</td>
+        <td>SQL Server</td>
+        <td>张老师</td>
+        <td>D1-102</td>
+        <td>60</td>
+    </tr>
+</table>
+
+<p>转为为1NF范式：</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>CNO</th>
+<th>CNAME</th>
+<th>TNAME</th>
+<th>TPLACE</th>
+<th>GRADE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902010</td>
+<td>C01</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+<td>D1-101</td>
+<td>70</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>C01</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+<td>D1-101</td>
+<td>80</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>C02</td>
+<td>SQL Server</td>
+<td>张老师</td>
+<td>D1-102</td>
+<td>60</td>
+</tr>
+</tbody></table>
+<p>但目前仍存在问题：冗余高（蔡老师的信息存储了两次），插入异常（没有同学选修的课程无法存储到这个关系中），删除异常（若删除最后一条记录，SQL Server这门课的相关信息也被删除了）。</p>
+<p>问题原因：GRADE完全函数依赖于(SNO, CNO)，CNAME、TNAME、TPALCE函数依赖于CNO。</p>
+<p>解决方案：将满足函数依赖的属性分解组成多个关系：</p>
+<p>Table: SG</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>CNO</th>
+<th>GRADE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902010</td>
+<td>C01</td>
+<td>70</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>C01</td>
+<td>80</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>C02</td>
+<td>60</td>
+</tr>
+</tbody></table>
+<p>Talbe: CT</p>
+<table>
+<thead>
+<tr>
+<th>CNO</th>
+<th>CNAME</th>
+<th>TNAME</th>
+<th>TPLACE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C01</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+<td>D1-101</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>SQL Server</td>
+<td>张老师</td>
+<td>D1-102</td>
+</tr>
+</tbody></table>
+<p>(2). 第二范式</p>
+<p>关系R为1NF，且R中的所有<em>非主属性</em>都完全依赖于<em>候选关键字</em>，则R为第二范式。</p>
+<p>关系SG和CT满足2NF的定义。</p>
+<p>但目前CT还是存在问题：CT中，若有一位新来的王老师还未分配教学课程，存在插入和删除异常以及修改繁琐的问题。</p>
+<p>问题原因：TNAME函数依赖于CNO，TPLACE函数依赖于TNAME，但CNO不函数依赖于TNAME。</p>
+<p>解决方案：消除CT中主属性对候选关键字的<em>传递函数依赖</em>，继续分解。</p>
+<p>Table: COURSE</p>
+<table>
+<thead>
+<tr>
+<th>CNO</th>
+<th>CNAME</th>
+<th>TNAME</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>C01</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>C02</td>
+<td>SQL Server</td>
+<td>张老师</td>
+</tr>
+</tbody></table>
+<p>Table: INSTRUCTOR</p>
+<table>
+<thead>
+<tr>
+<th>TNAME</th>
+<th>TPLACE</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>蔡老师</td>
+<td>D1-101</td>
+</tr>
+<tr>
+<td>张老师</td>
+<td>D1-102</td>
+</tr>
+<tr>
+<td>王老师</td>
+<td>D1-102</td>
+</tr>
+</tbody></table>
+<p>(3). 第三范式</p>
+<p>关系R为2NF，且R中每一个非主属性都不传递函数依赖于候选关键字，则R为第三范式。</p>
+<p>关系COURSE和INSTRUCTOR满足3NF的定义。</p>
+<p>将COURSE的课程CNO替换为学号SNO，得到一个新的选课关系表SCOURSE:</p>
+<p>Table: SCOURSE</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>CNAME</th>
+<th>TNAME</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902010</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>MySQL</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>902012</td>
+<td>MongoDB</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>902012</td>
+<td>Redis</td>
+<td>甄老师</td>
+</tr>
+<tr>
+<td>902013</td>
+<td>Redis</td>
+<td>贾老师</td>
+</tr>
+</tbody></table>
+<p>目前SCOURSE依然存在问题：一个学生可选多门课程，每一门课程可有多个老师，但每个老师只能指导一门课程，此时，一个新课程和该课程的指导老师的数据要插入到数据库时，必须至少有一个学生选修该课程，且这位老师被分配给他时，才能插入。</p>
+<p>问题原因：SCOURSE的候选关键字为(SNO, CNAME)和(SNO, TNAME)，故不存在主属性，也就不存在非主属性对主属性的传递函数依赖，所以SCOURSE也是一个3NF，但是主属性之间存在函数依赖CNAME函数依赖于TNAME。</p>
+<p>解决方案：进一步规范化。</p>
+<p>Table: ST</p>
+<table>
+<thead>
+<tr>
+<th>SNO</th>
+<th>TNAME</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>902010</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>902011</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>902012</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>902012</td>
+<td>甄老师</td>
+</tr>
+<tr>
+<td>902013</td>
+<td>贾老师</td>
+</tr>
+</tbody></table>
+<p>Table: TC</p>
+<table>
+<thead>
+<tr>
+<th>CNAME</th>
+<th>TNAME</th>
+</tr>
+</thead>
+<tbody><tr>
+<td>MySQL</td>
+<td>蔡老师</td>
+</tr>
+<tr>
+<td>MongoDB</td>
+<td>王老师</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>甄老师</td>
+</tr>
+<tr>
+<td>Redis</td>
+<td>贾老师</td>
+</tr>
+</tbody></table>
+<p>(4). BCNF</p>
+<p>为解决3NF有时出现的异常问题，R.F.Boyce和E.FCodd提出了3NF的改进形式BCNF</p>
+<p>关系R为3NF，X、Y为其属性集，F为其函数依赖集，若F中所有函数依赖X→Y（Y不属于X）中的X必包含候选关键字，则R为BCNF。（ps: 手动再见<del>~</del>）</p>
+<p>简而言之，若R中每一组函数依赖的决定因素都包含一个候选关键字，则R为BCNF，决定因素可以是单一属性或组合属性。</p>
+<p>满足BCNF条件有：所有非主属性对每一个候选键都是完全函数依赖； 所有的主属性对每一个不包含它的候选键，也是完全函数依赖；没有任何属性完全函数依赖于非候选键的任何一组属性。（ps: 手动再见<del>~</del>again）</p>
+<p>ST和TC满足BCNF的定义。</p>
+<h2 id="附记"><a href="#附记" class="headerlink" title="附记"></a>附记</h2><p>重点：关系模型的基本概念、关系的完整性约束、关系数据库的规范化理论</p>
+<p>难点：关系数据库的规范化理论</p>
+<p>关系数据库的规范化理论，的确难，可能第一遍看明白了，看第二遍之前就忘了，还是多看多理解吧</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-09-10");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-08-27T16:09:30.000Z" itemprop="datePublished">2019-08-28</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-09-09T17:28:00.023Z" itemprop="dateModified">2019-09-10</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/数据库系统原理/'>数据库系统原理</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/数据库/" rel="tag">#&nbsp;数据库</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/08/23/马克思主义笔记（一）/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">马克思主义笔记（一）</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://blog.yinchenxu.work">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
