@@ -1,0 +1,733 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>C#之委托 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="什么是委托委托是C#中非常重要的语法，">
+
+<!-- Keywords -->
+<meta name="keywords" content=", C#, 委托">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://blog.yinchenxu.work">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="C#之委托 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://blog.yinchenxu.work/2019/09/17/C-之委托/">
+<meta property="og:image" content="https://blog.yinchenxu.work/img/suka-favicon.ico">
+
+<meta property="og:description" content="什么是委托委托是C#中非常重要的语法，">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-09-16T17:02:15.000Z">
+    <meta property="article:modified_time" content="2019-09-16T17:02:15.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", C#, 委托"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.yinchenxu.work/2019/09/17/C-之委托/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.yinchenxu.work/2019/09/17/C-之委托/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.yinchenxu.work/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.yinchenxu.work/2019/09/17/C-之委托/"
+    },
+    "headline": "C#之委托 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-09-16T17:02:15.000Z",
+    "dateModified": "2019-09-20T15:22:28.396Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.yinchenxu.work/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", C#, 委托",
+    "description": "什么是委托委托是C#中非常重要的语法，"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">Home</a>
+    
+    
+        <a href="/archives/" class="navbar-link">Archives</a>
+    
+    
+        <a href="/search" class="navbar-link">Search</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">Share</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://blog.yinchenxu.work&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://blog.yinchenxu.work&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work&title=C#之委托" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=C#之委托&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.yinchenxu.work&text=C#之委托" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB50lEQVR42u3bQW7DMAxE0dz/0u0qQNCKM0PHC4n+3qQwDOcVkESRYl4/G14vUKBAgVqgXuKqnnnf+/fSxjuWz4Aag1oOuuJ+9cwK8Hk/+R5Qs1DVQHafCrxCqwkD6jkoNaArhBrwoEC54JsuqKCehaoC5d8XqEVTLbC37hJAbY9SG/o7P2/LZkBtjeomB26xVF96W9UF1NYoNRCvFi6qwOuwoOagksDpkgkFq/62KzqoI1EuWLrBqhKLbhEN1EyUShrSINwZ5NFAB3U0KgmoLuFUg1wlt6BmoJLCq9rguYQimSCgZqGqzV1yUKQSCbcIL/8RUCNRlw+lw6RUJSig5qHcZi3ZFHaCfFncB3U0ShUdqoGeHky6zR6omSi1sUuKaK4Zwj1vCxygjkN1A2d6uN09gAQ1B+UKD0mSeWWBtbsEUMei1MLpimLusClp3gE1E9XFJQ1bSWCOV3RQx6I6DTdysxYumq3qMKgjUd82MacbvHZTF6ijULZ5LzjkTg6VkkQF1AxUp6mmVawIG6PL2QfqaJQb4MlCmQThquALaibKNXa5w6D0WTWJQD0L5ZIH12iTFD1APQfVCboJ7paBDmp7VFKkcBOgc6j51SYP1PYo92OLatHrNEckkwfUDNROFyhQoEB9XL8keJAv4Im+cAAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">C#之委托</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-09-17</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/C/">C#</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">Share the post</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=C#之委托&url=https://blog.yinchenxu.work/2019/09/17/C-之委托/&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">Share to Weibo</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=C#之委托&url=https://blog.yinchenxu.work/2019/09/17/C-之委托/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">Share to Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work/2019/09/17/C-之委托/" target="_blank" rel="external noopener noreferrer nofollow">Share to Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work/2019/09/17/C-之委托/" target="_blank" rel="external noopener noreferrer nofollow">Share to Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work/2019/09/17/C-之委托/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">Share to LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work/2019/09/17/C-之委托/" target="_blank" rel="external noopener noreferrer nofollow"> Share to QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.yinchenxu.work/2019/09/17/C-之委托/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">Share to Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB50lEQVR42u3bQW7DMAxE0dz/0u0qQNCKM0PHC4n+3qQwDOcVkESRYl4/G14vUKBAgVqgXuKqnnnf+/fSxjuWz4Aag1oOuuJ+9cwK8Hk/+R5Qs1DVQHafCrxCqwkD6jkoNaArhBrwoEC54JsuqKCehaoC5d8XqEVTLbC37hJAbY9SG/o7P2/LZkBtjeomB26xVF96W9UF1NYoNRCvFi6qwOuwoOagksDpkgkFq/62KzqoI1EuWLrBqhKLbhEN1EyUShrSINwZ5NFAB3U0KgmoLuFUg1wlt6BmoJLCq9rguYQimSCgZqGqzV1yUKQSCbcIL/8RUCNRlw+lw6RUJSig5qHcZi3ZFHaCfFncB3U0ShUdqoGeHky6zR6omSi1sUuKaK4Zwj1vCxygjkN1A2d6uN09gAQ1B+UKD0mSeWWBtbsEUMei1MLpimLusClp3gE1E9XFJQ1bSWCOV3RQx6I6DTdysxYumq3qMKgjUd82MacbvHZTF6ijULZ5LzjkTg6VkkQF1AxUp6mmVawIG6PL2QfqaJQb4MlCmQThquALaibKNXa5w6D0WTWJQD0L5ZIH12iTFD1APQfVCboJ7paBDmp7VFKkcBOgc6j51SYP1PYo92OLatHrNEckkwfUDNROFyhQoEB9XL8keJAv4Im+cAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#什么是委托"><span class="post-toc-number">1.</span> <span class="post-toc-text">什么是委托</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#委托定义与使用"><span class="post-toc-number">2.</span> <span class="post-toc-text">委托定义与使用</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#委托的使用场景"><span class="post-toc-number">3.</span> <span class="post-toc-text">委托的使用场景</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#多播委托"><span class="post-toc-number">4.</span> <span class="post-toc-text">多播委托</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#强类型委托"><span class="post-toc-number">5.</span> <span class="post-toc-text">强类型委托</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="什么是委托"><a href="#什么是委托" class="headerlink" title="什么是委托"></a>什么是委托</h2><p>委托是C#中非常重要的语法，<a href="https://docs.microsoft.com/zh-cn/xamarin/android/get-started/java-developers#event-handling" target="_blank" rel="noopener">[1]</a>比如实现<em>事件</em>时，C#通过委托为事件的处理提供了语言级别的支持，而Java则不同，事件订阅者通常需要在Java中实现包含一个回调方法的Listener接口。</p>
+<p>现实生活中的委托很好理解，举一个经典例子，<a href="https://www.cnblogs.com/zhili/archive/2012/10/22/Delegate.html" target="_blank" rel="noopener">[2]</a>法庭上律师为当事人进行辩护，律师真正执行的是当事人的陈词，律师就是一个<strong>委托对象</strong>，当事人则委托律师进行辩护。</p>
+<p>在实际应用中，需要用到委托的场景，官方文档给出了一个案例，在天文学应用程序中，对恒星进行排序时，既可以根据恒星与地球的距离排序，也可以根据恒星的大小或感知到的亮度来对他们排序。在这些排序条件下，sort()方法本质上执行的是同一种操作：基于某种比较方法，对列表中的项目进行排序。但对于每种排序顺序的代码是不同的。</p>
+<p>也就是说，sort()方法应当<strong>在程序运行时，根据具体的对象类型进行绑定</strong>，这种绑定叫做<em>后期绑定</em>。</p>
+<p>C#中的委托使得<strong>函数可以作为参数被传递</strong>，作用相当于C/C++中的<em>函数指针</em>，以及JavaScript中的<em>闭包</em>。</p>
+<h2 id="委托定义与使用"><a href="#委托定义与使用" class="headerlink" title="委托定义与使用"></a>委托定义与使用</h2><p>(1). 委托的定义：</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">int</span> <span class="title">MyDelegate</span>(<span class="params"><span class="keyword">int</span> para1, <span class="keyword">int</span> para2</span>)</span>;</span><br></pre></td></tr></table></figure>
+
+<p>委托的语法可能看起来像是声明变量，但它实际上是声明类型，因为委托本质是一个类。</p>
+<p>(2). 声明委托实例</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//声明并实例化委托变量，静态方法和实例方法均可以传递</span></span><br><span class="line">    <span class="keyword">var</span> myDelegate = <span class="keyword">new</span> MyDelegate(Max);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">int</span> <span class="title">Max</span>(<span class="params"><span class="keyword">int</span> integer1, <span class="keyword">int</span> integer2</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">return</span> integer1 &gt; integer2 ? integer1 : integer2;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>传递给委托的方法，参数个数、类型、顺序以及方法返回值，必须同委托一致。</p>
+<p>(3). 调用委托</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//声明并实例化委托变量，静态方法和实例方法均可以传递</span></span><br><span class="line">    <span class="keyword">var</span> myDelegate = <span class="keyword">new</span> MyDelegate(Max);</span><br><span class="line">    <span class="comment">//将委托传递给一个方法</span></span><br><span class="line">    ConsoleMax(myDelegate);</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">ConsoleMax</span>(<span class="params">MyDelegate myDelegate</span>)</span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">int</span> max = myDelegate(<span class="number">111</span>, <span class="number">1111</span>);</span><br><span class="line">    Console.WriteLine(<span class="string">"The max integer is &#123;0&#125;"</span>, max);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>Max()通过委托的包装，作为了ConsoleMax()的参数，ConsoleMax()中调用委托myDelegate时，实际上调用的时Max()。</p>
+<h2 id="委托的使用场景"><a href="#委托的使用场景" class="headerlink" title="委托的使用场景"></a>委托的使用场景</h2><p>下面的代码块是一个经典的委托的使用场景，根据不同语言，打印不同的打招呼问候语；同时也展示了委托的隐式调用和显式调用。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 声明打招呼的委托类型</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">GreeingDelegate</span>(<span class="params"><span class="keyword">string</span> name</span>)</span>;</span><br><span class="line"></span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Program p = <span class="keyword">new</span> Program();</span><br><span class="line">        p.Greeting(<span class="string">"周杰伦"</span>, p.GreetingCh);</span><br><span class="line">        p.Greeting(<span class="string">"Jay"</span>, p.GreetingEn);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 通用打招呼方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">Greeting</span>(<span class="params"><span class="keyword">string</span> name, GreeingDelegate callback</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        <span class="comment">//隐式调用委托</span></span><br><span class="line">        callback(name);</span><br><span class="line">        <span class="comment">//显式调用委托</span></span><br><span class="line">        callback.Invoke(name);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 英文打招呼方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GreetingCh</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"你好，&#123;0&#125;！"</span>, name);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;summary&gt;</span></span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> 中文打招呼方法</span></span><br><span class="line">    <span class="comment"><span class="doctag">///</span> <span class="doctag">&lt;/summary&gt;</span></span></span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">void</span> <span class="title">GreetingEn</span>(<span class="params"><span class="keyword">string</span> name</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"Hello, &#123;0&#125;!"</span>, name);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>你好，周杰伦！<br>你好，周杰伦！<br>Hello, Jay!<br>Hello, Jay!</p>
+</blockquote>
+<h2 id="多播委托"><a href="#多播委托" class="headerlink" title="多播委托"></a>多播委托</h2><p>多播委托即多路广播委托，包装多个方法的委托，也被称为委托链。</p>
+<p>使用”+=”操作符来链接多个方法/委托，使用”-=”操作符来移除方法/委托，下面代码块展示了其用法。</p>
+<figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title">Program</span> </span><br><span class="line">&#123;</span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">MyMulticastDelegate</span>(<span class="params"></span>)</span>;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">static</span> <span class="keyword">void</span> <span class="title">Main</span>(<span class="params"><span class="keyword">string</span>[] args</span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        MyMulticastDelegate md = <span class="literal">null</span>;</span><br><span class="line">        md += fun1;</span><br><span class="line">        md += fun2;</span><br><span class="line">        md();</span><br><span class="line">        Console.WriteLine(<span class="string">""</span>);</span><br><span class="line">        md -= fun2;</span><br><span class="line">        md();</span><br><span class="line">        Console.WriteLine(<span class="string">""</span>);</span><br><span class="line">        MyMulticastDelegate d1 = fun1;</span><br><span class="line">        MyMulticastDelegate d2 = fun2;</span><br><span class="line">        md += d1;</span><br><span class="line">        md += d2;</span><br><span class="line">        md();</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun1</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"I'm first function"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    </span><br><span class="line">    <span class="function"><span class="keyword">public</span> <span class="keyword">static</span> <span class="keyword">void</span> <span class="title">fun2</span>(<span class="params"></span>)</span></span><br><span class="line"><span class="function"></span>    &#123;</span><br><span class="line">        Console.WriteLine(<span class="string">"I'm second function"</span>);</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>I’m first function<br>I’m second function</p>
+<p>I’m first function</p>
+<p>I’m first function<br>I’m first function<br>I’m second function</p>
+</blockquote>
+<ul>
+<li>委托方法的调用顺序和它们被添加的顺序是一致的</li>
+<li>委托是不可变的，所以+=/-=实际上是创建了新的委托</li>
+<li>若多播委托有非void的返回值，那么调用者会获取到最后一个被调方法的返回值</li>
+</ul>
+<h2 id="强类型委托"><a href="#强类型委托" class="headerlink" title="强类型委托"></a>强类型委托</h2><figure class="highlight csharp"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">public</span> <span class="keyword">delegate</span> <span class="keyword">void</span> <span class="title">Action</span>(<span class="params"></span>)</span>;</span><br><span class="line"><span class="keyword">public</span> <span class="keyword">delegate</span> TResult Func&lt;<span class="keyword">out</span> TResult&gt;();</span><br><span class="line"></span><br><span class="line"><span class="comment">// Todo</span></span><br></pre></td></tr></table></figure>
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">This article was last updated on <span id="date-expire-num"></span> days ago, and the information described in the article may have changed.</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-09-20");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">Published at&nbsp;<time datetime="2019-09-16T17:02:15.000Z" itemprop="datePublished">2019-09-17</time>
+
+    , Updated at&nbsp;<time datetime="2019-09-20T15:22:28.396Z" itemprop="dateModified">2019-09-20</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/C/'>C#</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/C/" rel="tag">#&nbsp;C#</a>
+
+<a class="post-tags-list-item" href="/tags/委托/" rel="tag">#&nbsp;委托</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2019/09/20/C-之事件/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">C#之事件</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/08/28/关系数据库/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">关系数据库</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://blog.yinchenxu.work">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
