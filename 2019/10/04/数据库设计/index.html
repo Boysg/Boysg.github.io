@@ -1,0 +1,796 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>数据库设计 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="概述数据库设计的本质是将数据库系统与现实世界进行密切地、有机地、协调一致的结合的过程。
+">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 数据库">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://blog.yinchenxu.work">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="数据库设计 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://blog.yinchenxu.work/2019/10/04/数据库设计/">
+<meta property="og:image" content="https://blog.yinchenxu.work/img/suka-favicon.ico">
+
+<meta property="og:description" content="概述数据库设计的本质是将数据库系统与现实世界进行密切地、有机地、协调一致的结合的过程。
+">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-10-03T17:16:58.000Z">
+    <meta property="article:modified_time" content="2019-10-03T17:16:58.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", 数据库"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://blog.yinchenxu.work/2019/10/04/数据库设计/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://blog.yinchenxu.work/2019/10/04/数据库设计/",
+    "@type": "BlogPosting",
+    "logo": "https://blog.yinchenxu.work/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://blog.yinchenxu.work/2019/10/04/数据库设计/"
+    },
+    "headline": "数据库设计 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-10-03T17:16:58.000Z",
+    "dateModified": "2019-10-06T07:46:47.695Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://blog.yinchenxu.work/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://blog.yinchenxu.work/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 数据库",
+    "description": "概述数据库设计的本质是将数据库系统与现实世界进行密切地、有机地、协调一致的结合的过程。
+"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://blog.yinchenxu.work&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://blog.yinchenxu.work&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work&title=数据库设计" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=数据库设计&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://blog.yinchenxu.work&text=数据库设计" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB5UlEQVR42u3a226DMBBF0fz/T7dPkRDCc/YUVcLD5iVRC2EhGV+O5/PzwOMjSpQoUReoT3F8/38873jd+fv5uvM51X1EzUJdNrqAOV93Pr96iKvrRM1DrRo4bbQJhu4j6hWoq0abru38nqj3oaoOczUIdx5A1FxUOVAuJm+rH083vz1LEPV4FF043P38l9WMqMehYujQWFzSgfx26iLq0aiqU6QLzKqjpYGIqHkouiBdNeBVo08PLWoeqtPYq06UhGcpTBM1A1UtHGkoSwJ+1KmKGoVKk/qEqIKNakIoaiYqhRBkQO4sGpahiKgRqM7GcwJXf1s1blHzUJ1JWLop7SSXEwFRY1BpsUhDeoIqN59EjUGRyVx6MWiI357kidoS1QnFSJEE2SBovX2itkKlYINM1kjwkTbMRc1CpeCsE6re2oASNQKVQolU5EVCf1ooJmoGKjXSFFZ0Ninxxrao7VGk4K8zUNMCirgzKmpLVCp6SAMz7WDJIkPUDFQnuKdFXjT0FzUT9deQqxOcpZdB1DxU2nwmG4xk0E7FFaJmoWjhKS3cIS9Qe4UsagQqFfilYpxOyC/qPSi6GKBBPirAEbU9KoX7dEBOk8Byc0nUGBQtuKHBGnkgVIAjakvUkw5RokSJOhy/ECyx8QsyREAAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">数据库设计</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-10-04</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/数据库原理/">数据库原理</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=数据库设计&url=https://blog.yinchenxu.work/2019/10/04/数据库设计/&pic=https://blog.yinchenxu.work/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=数据库设计&url=https://blog.yinchenxu.work/2019/10/04/数据库设计/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://blog.yinchenxu.work/2019/10/04/数据库设计/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://blog.yinchenxu.work/2019/10/04/数据库设计/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://blog.yinchenxu.work/2019/10/04/数据库设计/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://blog.yinchenxu.work/img/suka-favicon.ico&url=https://blog.yinchenxu.work/2019/10/04/数据库设计/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://blog.yinchenxu.work/2019/10/04/数据库设计/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB5UlEQVR42u3a226DMBBF0fz/T7dPkRDCc/YUVcLD5iVRC2EhGV+O5/PzwOMjSpQoUReoT3F8/38873jd+fv5uvM51X1EzUJdNrqAOV93Pr96iKvrRM1DrRo4bbQJhu4j6hWoq0abru38nqj3oaoOczUIdx5A1FxUOVAuJm+rH083vz1LEPV4FF043P38l9WMqMehYujQWFzSgfx26iLq0aiqU6QLzKqjpYGIqHkouiBdNeBVo08PLWoeqtPYq06UhGcpTBM1A1UtHGkoSwJ+1KmKGoVKk/qEqIKNakIoaiYqhRBkQO4sGpahiKgRqM7GcwJXf1s1blHzUJ1JWLop7SSXEwFRY1BpsUhDeoIqN59EjUGRyVx6MWiI357kidoS1QnFSJEE2SBovX2itkKlYINM1kjwkTbMRc1CpeCsE6re2oASNQKVQolU5EVCf1ooJmoGKjXSFFZ0Ninxxrao7VGk4K8zUNMCirgzKmpLVCp6SAMz7WDJIkPUDFQnuKdFXjT0FzUT9deQqxOcpZdB1DxU2nwmG4xk0E7FFaJmoWjhKS3cIS9Qe4UsagQqFfilYpxOyC/qPSi6GKBBPirAEbU9KoX7dEBOk8Byc0nUGBQtuKHBGnkgVIAjakvUkw5RokSJOhy/ECyx8QsyREAAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#数据库设计的基本步骤"><span class="post-toc-number">2.</span> <span class="post-toc-text">数据库设计的基本步骤</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#关系数据库设计方法"><span class="post-toc-number">3.</span> <span class="post-toc-text">关系数据库设计方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#关系数据库设计过程与各级模式"><span class="post-toc-number">3.1.</span> <span class="post-toc-text">关系数据库设计过程与各级模式</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#概念结构设计方法"><span class="post-toc-number">3.2.</span> <span class="post-toc-text">概念结构设计方法</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逻辑结构设计方法"><span class="post-toc-number">3.3.</span> <span class="post-toc-text">逻辑结构设计方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#E-R图向关系模型的转换"><span class="post-toc-number">3.3.1.</span> <span class="post-toc-text">E-R图向关系模型的转换</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#数据模型的优化"><span class="post-toc-number">3.3.2.</span> <span class="post-toc-text">数据模型的优化</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#设计用户子模式"><span class="post-toc-number">3.3.3.</span> <span class="post-toc-text">设计用户子模式</span></a></li></ol></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#物理设计方法"><span class="post-toc-number">3.4.</span> <span class="post-toc-text">物理设计方法</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立索引"><span class="post-toc-number">3.4.1.</span> <span class="post-toc-text">建立索引</span></a></li><li class="post-toc-item post-toc-level-4"><a class="post-toc-link" href="#建立聚集"><span class="post-toc-number">3.4.2.</span> <span class="post-toc-text">建立聚集</span></a></li></ol></li></ol></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>数据库设计的本质是将数据库系统与现实世界进行密切地、有机地、协调一致的结合的过程。</p>
+<img src="/2019/10/04/数据库设计/SummaryOfDatabaseDesign.jpg" title="数据库概述">
+
+<p>数据库设计方法之规范设计法：</p>
+<ol>
+<li>新奥尔良设计方法：将数据库设计分为需求分析、概念结构设计、逻辑结构设计和物理结构设计四个阶段。<em>重结构设计、轻行为设计</em></li>
+<li>基于E-R模型的数据库设计方法：在需求分析基础上用E-R图构造一个反映现实世界实体之间联系的企业模式，然后将此模式转换成某一特定DBMS下的概念模式</li>
+<li>基于第三范式的设计方法：① 确定数据库的模式、属性及属性间的依赖关系 ② 将它们组织在单一的关系模式中 ③ 若不符合第三范式约束条件，进行模式分解，规范成若干各第三范式关系模式的集合。</li>
+</ol>
+<h2 id="数据库设计的基本步骤"><a href="#数据库设计的基本步骤" class="headerlink" title="数据库设计的基本步骤"></a>数据库设计的基本步骤</h2><p>1). 需求分析</p>
+<ol>
+<li>确定数据库范围：确定数据库支持哪些功能</li>
+<li>应用过程分析：了解并分析数据与数据处理间的关系</li>
+<li>收集与分析数据：静态结构（原始数据）、动态结构（应用操作施加于数据后）、数据约束（使用数据时的特殊需求）</li>
+<li>编写需求分析报告：数据库的应用功能目标、标明不同用户视图范围、应用处理过程需求说明、数据字典、数据量、数据约束</li>
+</ol>
+<p>2). 概念结构设计</p>
+<ul>
+<li>按照特定方法设计满足应用需求的概念模型</li>
+<li>概念模型独立于任何软件硬件</li>
+<li>常用方法有实体分析法（自顶向下法）和综合属性法（自顶向上法）</li>
+</ul>
+<p>3). 逻辑结构设计</p>
+<ul>
+<li>将概念模型转换为等价的、并为特定的DBMS所支持的数据模型结构</li>
+<li>一般由层次、网状、关系数据模型表示</li>
+</ul>
+<p>4). 物理设计</p>
+<p>确定数据库在存储设备上的存储结构及存取方法，建立索引和聚集，物理块大小、缓冲区个数和大小、数据压缩的选择等</p>
+<p>5). 数据库的实施</p>
+<ol>
+<li>加载数据</li>
+<li>应用程序设计</li>
+<li>数据库试运行</li>
+</ol>
+<p>6). 数据库运行和维护</p>
+<p>系统维护中最困难的工作是数据库重组与重构：</p>
+<ol>
+<li>重组：不改变逻辑结构和物理结构，只是利用DBMS提供的设施调整数据库中数据的存储位置，从而回收“碎片”，使有关联的数据尽可能靠近存放，达到提高空间利用率和数据存取效率的目的</li>
+<li>重构：部分修改逻辑结构和物理结构，往往是因为应用需求的改变与拓展或发现当初的设计欠妥而引起的</li>
+</ol>
+<h2 id="关系数据库设计方法"><a href="#关系数据库设计方法" class="headerlink" title="关系数据库设计方法"></a>关系数据库设计方法</h2><h3 id="关系数据库设计过程与各级模式"><a href="#关系数据库设计过程与各级模式" class="headerlink" title="关系数据库设计过程与各级模式"></a>关系数据库设计过程与各级模式</h3><ol>
+<li>概念结构设计阶段：形成独立于机器特点、独立于各关系数据库管理系统产品的<strong>概念模式</strong>（如ER图）</li>
+<li>逻辑结构设计阶段：将概念模式转换成数据库产品支持的<strong>关系数据模式</strong>，然后建立根据用户处理的需求、安全性的考虑，在基本表的基础上建立必要的视图，形成<strong>外模式</strong></li>
+<li>物理结构设计阶段：根据数据库管理系统的特点和处理需要，进行物理存储安排，建立索引，形成数据库<strong>内模式</strong></li>
+</ol>
+<p>如下图所示：</p>
+<img src="/2019/10/04/数据库设计/AllLevelsRelationalDatabaseModels.jpg" title="关系数据库各级模式">
+
+<h3 id="概念结构设计方法"><a href="#概念结构设计方法" class="headerlink" title="概念结构设计方法"></a>概念结构设计方法</h3><ol>
+<li>ER 模型的基本元素是：实体(实体型)、联系和属性</li>
+<li>实体：是一个数据对象，指应用中可以区别的客观存在的事物。 实体集：是指同一类实体构成的集合。 实体类型：是对实体集中实体的定义。 一般将实体、实体集、实体类型统称为实体</li>
+<li>联系：表示一个或多个实体之间的关联关系。 联系集：是指同一类联系构成的集合。 联系类型：是对联系集中联系的定义。 一般将联系、联系集、联系类型统称为联系</li>
+<li>同一个实体集内部实体之间的联系，称为<em>一元联系</em>；两个不同实体集实体之间的联系， 称为<em>二元联系</em>，以此类推</li>
+<li>属性：实体的某一特性称为属性。在一个实体中，能够惟一标识实体的属性或属性集称为<em>实体标识符</em></li>
+<li>ER 模型中，方框表示实体、菱形框表示联系、椭圆形框表示属性、实体与联系、实体 与其属性、联系与其属性之间用直线连接。实体标识符下画横线。联系的类型要在直线 上标注。<strong>注意：联系也有可能存在属性，但联系本身没有标识符</strong></li>
+<li>概念设计三个步骤：设计局部 ER 模型、设计全局 ER 模型和全局 ER 模型的优化。 </li>
+</ol>
+<p>一元联系：职工实体型内部，领导与被领导的联系，一个职工领导若干名职工，一名职工仅被另一名职工直接领导。</p>
+<img src="/2019/10/04/数据库设计/UnitaryRelationship.jpg" title="一元联系">
+
+<p>二元联系：一个系至多有一个系主任，一个系主任至多在一个系任职（1:1）；一个班级有N个学生，一个学生至多属于一个班级（1:N）；一个学生可以选修N门课程，一门课程可以被M个学生选修（M:N）。</p>
+<img src="/2019/10/04/数据库设计/BinaryRelationship.jpg" title="二元联系">
+
+<p>多元联系：一门课程可以由M名教师教授，使用N本参考书，每个教师只讲授一门课程，每本参考书用于一门课程；一个供应商可以供给N个项目P种零件，每个项目可以存在M个供应商，每种零件也可由M个供应商供给。</p>
+<img src="/2019/10/04/数据库设计/N-aryRelationship.jpg" title="多元联系">
+
+<h3 id="逻辑结构设计方法"><a href="#逻辑结构设计方法" class="headerlink" title="逻辑结构设计方法"></a>逻辑结构设计方法</h3><h4 id="E-R图向关系模型的转换"><a href="#E-R图向关系模型的转换" class="headerlink" title="E-R图向关系模型的转换"></a>E-R图向关系模型的转换</h4><p>遵循原则：</p>
+<ol>
+<li>实体的属性作为关系的属性，实体的键作为关系的键。</li>
+<li>若实体间联系是 1:1，可以在两个实体类型转换成的关系模式中任意一个关系模式的属性中加入另一个关系模式的键（作为外键）和联系类型的属性。</li>
+<li>若实体间联系是 1:N，则在 N 端实体类型转换成的关系模式中加入1端实体类型的键（作为外键）和联系类型的属性。 </li>
+<li>若实体间联系是 M:N，则将联系类型也转换成关系模式，其属性为两端实体类型的键（作为外键）加上联系类型的属性，而键为两端实体键的组合。 </li>
+<li>三个及以上实体间的多元联系，可以与该多元联系相连的各实体的键以及联系本身的属性均转换为关系的属性，而关系的键为格实体键的组合。</li>
+<li>具有相同键的关系模式可合并。</li>
+</ol>
+<h4 id="数据模型的优化"><a href="#数据模型的优化" class="headerlink" title="数据模型的优化"></a>数据模型的优化</h4><ol>
+<li>确定各属性间的函数依赖关系</li>
+<li>对于各个关系模式之间的数据以来进行极小化处理，消除冗余的联系</li>
+<li>判断各个关系模式的范式，根据实际需要确定最合适的范式</li>
+<li>按照需求分析阶段得到的处理需求，分析这些模式对于这样的应用环境是否合适，确定是否要对这些模式进行合并或分解</li>
+<li>对关系模式进行必要的分解，提高数据操作的效率和存储空间的利用率</li>
+</ol>
+<h4 id="设计用户子模式"><a href="#设计用户子模式" class="headerlink" title="设计用户子模式"></a>设计用户子模式</h4><ol>
+<li>通过试图机制在设计用户视图时，重新定义某些属性的别名，使其更符合用户的习惯，以方便使用</li>
+<li>可以对不同级别的用户定义不同的视图，以保证系统的安全性</li>
+<li>简化用户对系统的使用。如果某些局部应用中经常要使用某些很复杂的查询，为了方便用户，可以将这些复杂查询定义为视图，用户每次只对定义好的视图进行查询。</li>
+</ol>
+<h3 id="物理设计方法"><a href="#物理设计方法" class="headerlink" title="物理设计方法"></a>物理设计方法</h3><p>物理设计的任务主要是通过对关系建立索引和聚集来实现与应用相关的逻辑连接和物理聚集，以改善数据库的存取效率。</p>
+<h4 id="建立索引"><a href="#建立索引" class="headerlink" title="建立索引"></a>建立索引</h4><ul>
+<li>索引是为了加速对表中数据行的检索而创建的一种分散的存储结构。</li>
+<li>索引是针对表而建立的，它是由数据页面以外的索引页面组成的，每个索引页面中的行都会含有逻辑指针，以便加速检索物理数据。</li>
+<li>索引可以理解为一种特殊的目录</li>
+<li>由于建立索引会带来维护索引空间的开销，所以建立索引的数据对象通常应具有较少的插入、修改、删除操作</li>
+<li>建立索引的属性也是其所在关系中使用频率较高的属性</li>
+<li>建立索引的方式通常由静态和动态两种</li>
+<li>静态建立索引是指应用人员预先建立索引，后续应用程序菊科直接使用该索引存取数据，适合用户较多、使用周期较长的数据</li>
+<li>动态建立索引是指应用人员在程序内外临时建立索引，适合单独用户或临时性使用要求的情况</li>
+</ul>
+<h4 id="建立聚集"><a href="#建立聚集" class="headerlink" title="建立聚集"></a>建立聚集</h4><p>聚集是将相关数据集中存放的物理存储技术，以提高I/O的数据命中率而改善存取速度。</p>
+<p>所谓集中存放是指，将相关数据尽可能地存放于一个物理块中，若关系中含有100个1995年出生的教师数据的元组，最坏的情况下，100个元组分布在100个不同的物理块中，若按出生时间集中存放数据，则一次能读入多个教师数据。</p>
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2019-10-06");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-10-03T17:16:58.000Z" itemprop="datePublished">2019-10-04</time>
+
+    , 最后修改于&nbsp;<time datetime="2019-10-06T07:46:47.695Z" itemprop="dateModified">2019-10-06</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/数据库原理/'>数据库原理</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/数据库/" rel="tag">#&nbsp;数据库</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2019/10/06/MySQL基本操作/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">MySQL基本操作</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/09/20/C-之事件/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">C#之事件</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://blog.yinchenxu.work">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
