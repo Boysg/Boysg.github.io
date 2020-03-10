@@ -1,0 +1,755 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>数据结构之链表 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="概述在计算机中用一组任意的，可能是连续的，也可能是不连续的存储单元">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 链表">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://boysg.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="数据结构之链表 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://boysg.github.io/2019/12/31/数据结构之链表/">
+<meta property="og:image" content="https://boysg.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="概述在计算机中用一组任意的，可能是连续的，也可能是不连续的存储单元">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-12-30T16:16:38.000Z">
+    <meta property="article:modified_time" content="2019-12-30T16:16:38.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", 链表"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://boysg.github.io/2019/12/31/数据结构之链表/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://boysg.github.io/2019/12/31/数据结构之链表/",
+    "@type": "BlogPosting",
+    "logo": "https://boysg.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://boysg.github.io/2019/12/31/数据结构之链表/"
+    },
+    "headline": "数据结构之链表 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://boysg.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-12-30T16:16:38.000Z",
+    "dateModified": "2020-03-10T16:44:18.283Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://boysg.github.io/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://boysg.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://boysg.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 链表",
+    "description": "概述在计算机中用一组任意的，可能是连续的，也可能是不连续的存储单元"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://boysg.github.io&pic=https://boysg.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://boysg.github.io&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://boysg.github.io&title=数据结构之链表" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=数据结构之链表&summary=XiaoYin&pics=https://boysg.github.io/img/suka-favicon.ico&url=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://boysg.github.io&text=数据结构之链表" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB2ElEQVR42u3a0Q6CMAyFYd7/pfWWmPWcU9RklJ8bTED3kcyytjteGx4HKFCgQC1QhzjU9fP3z+fzdz6v298CNQa1nHSLwT5/fAVYDZaMA2oeajVYNYFXk72a2Ok4oJ6Dqj5Xgbb6o4ACVQXPVSB1g4F6Jkq9KB1KLdz+skoAtT3KJQ6/Ov80mwG1LapVgBBJQ/XyTv4woGahVGKgXrAqaaiuqxczqFkoeaNZyLnDvcRlIRbUbVHJ2SUBqsCRJhig5qDcRO4UPDpFtEvBE9T2KBc0XXDtFDuqRgGoWahkIruEwTWK0kUjqBkolXiqAJk+kMOBmodSN7nGoyriq6BcPhCoEaikqXM1Ue1MclBzUa7QmhTsXRMyShxA3R51FdNNFGRABjUG5Rb9rkHtNoK5CQ5qFioNcmlxX01sm1yAGoNyhQuFTrDxZhxQY1CdBk8niCb3R7sXQd0S5RLKZDGXbFStAieoWajuS7Yz8VsJK6gRqKTI7wpoDpQs/EDNQSWTMSmqJptwQD0H5Qr9SYP62+ALah4q3fB3paGUFEFAPQ+lGtyqsZgWRUA9B+V+1BVXk0YTqJmobpGrszFVPQiomag0cXAB9Mqmiq+zGVDboXY6QIECBep0vAF4ARGgdxyqrAAAAABJRU5ErkJggg==" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">数据结构之链表</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-12-31</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/数据结构/">数据结构</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=数据结构之链表&url=https://boysg.github.io/2019/12/31/数据结构之链表/&pic=https://boysg.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=数据结构之链表&url=https://boysg.github.io/2019/12/31/数据结构之链表/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://boysg.github.io/2019/12/31/数据结构之链表/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://boysg.github.io/2019/12/31/数据结构之链表/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://boysg.github.io/2019/12/31/数据结构之链表/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://boysg.github.io/img/suka-favicon.ico&url=https://boysg.github.io/2019/12/31/数据结构之链表/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://boysg.github.io/2019/12/31/数据结构之链表/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB2ElEQVR42u3a0Q6CMAyFYd7/pfWWmPWcU9RklJ8bTED3kcyytjteGx4HKFCgQC1QhzjU9fP3z+fzdz6v298CNQa1nHSLwT5/fAVYDZaMA2oeajVYNYFXk72a2Ok4oJ6Dqj5Xgbb6o4ACVQXPVSB1g4F6Jkq9KB1KLdz+skoAtT3KJQ6/Ov80mwG1LapVgBBJQ/XyTv4woGahVGKgXrAqaaiuqxczqFkoeaNZyLnDvcRlIRbUbVHJ2SUBqsCRJhig5qDcRO4UPDpFtEvBE9T2KBc0XXDtFDuqRgGoWahkIruEwTWK0kUjqBkolXiqAJk+kMOBmodSN7nGoyriq6BcPhCoEaikqXM1Ue1MclBzUa7QmhTsXRMyShxA3R51FdNNFGRABjUG5Rb9rkHtNoK5CQ5qFioNcmlxX01sm1yAGoNyhQuFTrDxZhxQY1CdBk8niCb3R7sXQd0S5RLKZDGXbFStAieoWajuS7Yz8VsJK6gRqKTI7wpoDpQs/EDNQSWTMSmqJptwQD0H5Qr9SYP62+ALah4q3fB3paGUFEFAPQ+lGtyqsZgWRUA9B+V+1BVXk0YTqJmobpGrszFVPQiomag0cXAB9Mqmiq+zGVDboXY6QIECBep0vAF4ARGgdxyqrAAAAABJRU5ErkJggg==" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#概述"><span class="post-toc-number">1.</span> <span class="post-toc-text">概述</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单链表"><span class="post-toc-number">2.</span> <span class="post-toc-text">单链表</span></a></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#单循环链表"><span class="post-toc-number">3.</span> <span class="post-toc-text">单循环链表</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="概述"><a href="#概述" class="headerlink" title="概述"></a>概述</h2><p>在计算机中用一组任意的，可能是连续的，也可能是<strong>不连续的存储单元</strong>存储线性表的数据元素，称为<em>链式存储结构</em>。和顺序表相比的优势（使用场景）：</p>
+<ul>
+<li>当插入或删除元素较多时</li>
+<li>不确定元素个数时</li>
+</ul>
+<p>因为不确定链式存储结构的存储单元是否连续，所以链表的结点不可以随机存取。</p>
+<p>链表中的数据是以<em>结点</em>来表示的，每个结点的构成：</p>
+<ul>
+<li>数据域(存储数据元素的映像) </li>
+<li>指针域(存储后继元素存储位置)</li>
+</ul>
+<img src="/2019/12/31/数据结构之链表/node.png">
+
+<h2 id="单链表"><a href="#单链表" class="headerlink" title="单链表"></a>单链表</h2><p>n个结点链成的一个链表，当每个结点中只包含一个指针域时，称为<em>单链表</em></p>
+<img src="/2019/12/31/数据结构之链表/SingleLlinkedList.png">
+
+<ul>
+<li>开始结点无直接前趋：头指针head指向开始结点</li>
+<li>终端结点无后继结点：终端结点指针域为NULL</li>
+</ul>
+<p>因此，一个单链表可由头指针唯一确定，并且可以用头指针的名字命名。</p>
+<ul>
+<li>定义一个单链表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="keyword">char</span> Datatype;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义结点类型</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">node</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    Datatype data;      <span class="comment">//数据域</span></span><br><span class="line">    <span class="class"><span class="keyword">struct</span> <span class="title">node</span> *<span class="title">next</span>;</span>  <span class="comment">//指针域</span></span><br><span class="line">&#125; ListNode;</span><br><span class="line"></span><br><span class="line"><span class="comment">//定义指向单链表的指针类型</span></span><br><span class="line"><span class="keyword">typedef</span> ListNode *LinkList;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>头插法创建单链表</li>
+</ul>
+<p>将新结点插入到当前链表表头，直到读入结束标志，如图所示</p>
+<img src="/2019/12/31/数据结构之链表/SListInsertF.png">
+
+<p>代码如下，这里指定回车为结束标志</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">CreateListF</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//声明头指针，结点类型变量, 数据变量</span></span><br><span class="line">    LinkList head;</span><br><span class="line">    ListNode *p;</span><br><span class="line">    Datatype ch;</span><br><span class="line">    <span class="comment">//置空单链表</span></span><br><span class="line">    head = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//新增结点</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ch = getchar();</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'\n'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//给ListNode动态分配一块空间</span></span><br><span class="line">        p = (ListNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br><span class="line">        p-&gt;data = ch;</span><br><span class="line">        <span class="comment">//新增结点指针域指向下一节点</span></span><br><span class="line">        p-&gt;next = head;</span><br><span class="line">        <span class="comment">//新增结点成为头节点</span></span><br><span class="line">        head = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>尾插法创建单链表</li>
+</ul>
+<p>需要一个尾指针rear，始终指向链表的尾结点，如图</p>
+<img src="/2019/12/31/数据结构之链表/SListInsertR.png">
+
+<p>代码如下</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br></pre></td><td class="code"><pre><span class="line"><span class="function">LinkList <span class="title">CreateListR</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//声明头指针和尾指针，结点类型变量，数据变量</span></span><br><span class="line">    LinkList head, rear;</span><br><span class="line">    ListNode *p;</span><br><span class="line">    <span class="keyword">char</span> ch;</span><br><span class="line">    <span class="comment">//置空单链表</span></span><br><span class="line">    head = <span class="literal">NULL</span>;</span><br><span class="line">    rear = <span class="literal">NULL</span>;</span><br><span class="line">    <span class="comment">//新增结点</span></span><br><span class="line">    <span class="keyword">while</span> (<span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        ch = getchar();</span><br><span class="line">        <span class="keyword">if</span> (ch == <span class="string">'\n'</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">break</span>;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//给ListNode动态分配一块空间</span></span><br><span class="line">        p = (ListNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br><span class="line">        p-&gt;data = ch;</span><br><span class="line">        <span class="comment">//头指针指向第一个输入的结点</span></span><br><span class="line">        <span class="keyword">if</span> (head == <span class="literal">NULL</span>)</span><br><span class="line">        &#123;</span><br><span class="line">            head = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//上一个新增结点的指针域指向本次新增结点</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            rear-&gt;next = p;</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="comment">//尾指针始终指向最后输入的那个结点</span></span><br><span class="line">        rear = p;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//终端结点指针域置空</span></span><br><span class="line">    <span class="keyword">if</span> (rear != <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        rear-&gt;next = <span class="literal">NULL</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> head;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找单链表第i个结点，<strong>时间复杂度为O(n)</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回head指向的单链表的第i个结点</span></span><br><span class="line"><span class="function">ListNode *<span class="title">GetNode</span><span class="params">(LinkList head, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode *p = head;</span><br><span class="line">    <span class="keyword">int</span> j = <span class="number">0</span>;</span><br><span class="line">    <span class="comment">//循环向后查找结点，直到第i个结点或者链表尾(NULL)</span></span><br><span class="line">    <span class="keyword">while</span> (++j &lt; i &amp;&amp; p)</span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回NULL表示索引i超出了链表范围，否则返回第i个结点</span></span><br><span class="line">    <span class="keyword">return</span> j == i ? p : <span class="literal">NULL</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>查找某个值的结点位置，同样的，<strong>时间复杂度为O(n)</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//返回head指向的单链表的第一个等于k的结点</span></span><br><span class="line"><span class="function">ListNode *<span class="title">LocateNode</span><span class="params">(LinkList head, Datatype k)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    ListNode *p = head;</span><br><span class="line">    <span class="comment">//循环向后查找结点，直到找到第一个等于k的结点或者链表尾(NULL)</span></span><br><span class="line">    <span class="comment">//注意：while条件里需先对p判空，否则当p为NULL时，p-&gt;data会引发中断</span></span><br><span class="line">    <span class="keyword">while</span> (p &amp;&amp; p-&gt;data != k)</span><br><span class="line">    &#123;</span><br><span class="line">        p = p-&gt;next;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//返回NULL表示没有找到等于k的结点，否则返回该结点</span></span><br><span class="line">    <span class="keyword">return</span> p;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>插入运算，最重要的是先找到插入位置的的前一个结点…，所以依然<strong>时间复杂度0(n)</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//向head指向的单链表第i个结点的位置，插入一个数据域值为x的新节点</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertList</span><span class="params">(LinkList head, <span class="keyword">int</span> i, Datatype x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//p为链表第i - 1个结点，s为插入的新节点</span></span><br><span class="line">    ListNode *p, *s;</span><br><span class="line">    p = GetNode(head, i - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"error position"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    s = (ListNode *)<span class="built_in">malloc</span>(<span class="keyword">sizeof</span>(ListNode));</span><br><span class="line">    s-&gt;data = x;</span><br><span class="line">    <span class="comment">//新节点指针域指向第i个结点</span></span><br><span class="line">    s-&gt;next = p-&gt;next;</span><br><span class="line">    <span class="comment">//新节点成为第i个节点</span></span><br><span class="line">    p-&gt;next = s;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>删除运算，同理，最重要的是先找到删除结点的前一个结点…，<strong>时间复杂度O(n)</strong></li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//删除head指向的单链表的第i个结点，并返回删除结点的数据域值</span></span><br><span class="line"><span class="function">Datatype <span class="title">DeleteList</span><span class="params">(LinkList head, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//p为链表第i - 1个结点，s为第i个结点</span></span><br><span class="line">    ListNode *p, *s;</span><br><span class="line">    <span class="comment">//x为删除结点的值</span></span><br><span class="line">    Datatype x;</span><br><span class="line">    p = GetNode(head, i - <span class="number">1</span>);</span><br><span class="line">    <span class="keyword">if</span> (p == <span class="literal">NULL</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"error position"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    s = p-&gt;next;</span><br><span class="line">    <span class="comment">//i - 1结点的指针域指向i + 1结点</span></span><br><span class="line">    p-&gt;next = s-&gt;next;</span><br><span class="line">    x = s-&gt;data;</span><br><span class="line">    <span class="comment">//释放第i 个结点的空间并返回结点值</span></span><br><span class="line">    <span class="built_in">free</span>(s);</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<h2 id="单循环链表"><a href="#单循环链表" class="headerlink" title="单循环链表"></a>单循环链表</h2><p>单链表的最后一个结点（终端结点）的指针域不为空，而是指向链表的头节点，使整个链表构成一个环。</p>
+<ul>
+<li>从任意一个结点开始都能访问到其他结点</li>
+</ul>
+<img src="/2019/12/31/数据结构之链表/SListInsertR.png">
+
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2020-03-11");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-30T16:16:38.000Z" itemprop="datePublished">2019-12-31</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-03-10T16:44:18.283Z" itemprop="dateModified">2020-03-11</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/数据结构/'>数据结构</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/链表/" rel="tag">#&nbsp;链表</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/12/22/数据结构之顺序表/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">数据结构之顺序表</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://boysg.github.io">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>

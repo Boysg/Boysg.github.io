@@ -1,0 +1,748 @@
+<!DOCTYPE html>
+
+<html lang="zh-Hans">
+    <head><meta name="generator" content="Hexo 3.9.0">
+    <meta charset="utf-8">
+    <!--
+        © SukkaW
+        GitHub: https://github.com/SukkaW/hexo-theme-suka
+        Version: 1.3.3
+    -->
+    <script>
+window.lsVersion = "1.3.3",
+window.oldVersion = [
+    
+        
+            "0.2.0","0.0.1","0.1.0","1.0.0","1.0.1","1.1.0","1.1.1","1.2.0","1.3.0","1.3.2"
+        
+    
+]
+</script>
+
+    <!-- ### DNS Prefetch ### -->
+    <meta http-equiv="x-dns-prefetch-control" content="on">
+<!-- busuanzi -->
+
+    <link rel="dns-prefetch" href="//busuanzi.ibruce.info">
+
+
+<!-- comment -->
+
+
+
+
+
+
+
+<!-- analytics -->
+
+
+
+
+
+
+
+
+    <!-- ### Preload ### -->
+    
+    <!-- Busuanzi -->
+    
+    <link rel="preload" href="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" as="script">
+
+
+
+
+
+
+
+    <!-- ### Meta & Title & Info ### -->
+    <meta http-equiv="X-UA-Compatible" content="IE=Edge, chrome=1">
+<meta name="renderer" content="webkit">
+<meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=1.0, user-scalable=no, viewport-fit=cover">
+
+<!-- Title -->
+<title>数据结构之顺序表 | 小尹的博客</title>
+
+<!-- favicon -->
+<!-- Favicons -->
+
+    <link rel="icon" type="image/ico" href="/img/suka-favicon.ico">
+
+
+
+
+
+
+<!-- Android Chrome Color -->
+
+
+
+<meta name="format-detection" content="telephone=no">
+
+<!-- Description -->
+<meta name="description" content="线性表">
+
+<!-- Keywords -->
+<meta name="keywords" content=", 数组">
+
+<!-- Disable Fucking Bloody Baidu Tranformation -->
+<meta http-equiv="Cache-Control" content="no-transform">
+<meta http-equiv="Cache-Control" content="no-siteapp">
+
+    <!-- ### Import File ### -->
+    
+        <!-- spectre.css -->
+
+    <link rel="stylesheet" href="/lib/spectre/spectre.min.css">
+
+
+<style>
+    body {
+        background-color: #f8f9fa;
+    }
+
+    a, a:visited {
+        color: #0070ff;
+    }
+
+    a:active, a:focus, a:hover {
+        color: #0070ff;
+        opacity: .75;
+    }
+
+    #post-content a,
+    #post-content a:hover,
+    #post-content a:focus,
+    #post-content a:visited {
+        color: #005eb9;
+        opacity: 1;
+    }
+
+    .post-entry .card-body a {
+        color: #0070ff;
+    }
+
+    .avatar {
+        background: #444;
+    }
+
+    .navbar-link,
+    .navbar-link:visited,
+    .timeline .timeline-item .timeline-icon.icon-lg {
+        color: #0070ff;
+    }
+
+    .navbar-link:hover {
+        color: #0070ff;
+        opacity: .8;
+    }
+
+    #search-input .btn,
+    #disqus_click_btn,
+    #disqus-switch-to-direct,
+    #disqus-loadmore-button {
+        background: #727e96;
+        border-color: #727e96;
+        color: #fff;
+    }
+
+    #post-toc a.post-toc-link,
+    #post-toc a.post-toc-link:visited,
+    .share-menu.menu .menu-item>a {
+        color: #727e96;
+    }
+
+    .share-menu.menu .menu-item>a:hover,
+    .share-menu.menu .menu-item>a:focus,
+    .share-menu.menu .menu-item>a:visited {
+        color: #50596c;
+        background: #f8f9fa;
+        opacity: .85;
+    }
+</style>
+
+<!-- style.css -->
+
+    <link rel="stylesheet" href="/css/style.min.css">
+
+
+
+
+
+
+
+
+
+    <!-- Prettify Theme -->
+    
+    
+        <link rel="stylesheet" href="/css/highlight/github.min.css">
+    
+
+
+
+    
+
+    <!-- ### Site Verification ### -->
+    
+
+
+    <!-- ### RSS ### -->
+    
+
+    <!-- ### WebApp ### -->
+    <meta name="mobile-web-app-capable" content="yes">
+<meta name="application-name" content="小尹的博客">
+<meta name="msapplication-starturl" content="https://boysg.github.io">
+
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="小尹的博客">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+
+<!-- Manifest Import -->
+
+<!-- Open Search -->
+
+
+    <!-- ### The Open Graph & Twitter Card Protocol ### -->
+    <meta property="og:title" content="数据结构之顺序表 | 小尹的博客">
+<meta property="og:site_name" content="小尹的博客">
+
+<meta property="og:locale" content="zh-Hans">
+
+<meta property="og:url" content="https://boysg.github.io/2019/12/22/数据结构之顺序表/">
+<meta property="og:image" content="https://boysg.github.io/img/suka-favicon.ico">
+
+<meta property="og:description" content="线性表">
+
+<meta name="twitter:card" content="summary">
+
+
+    <meta property="og:type" content="article">
+    <meta property="article:published_time" content="2019-12-22T15:41:40.000Z">
+    <meta property="article:modified_time" content="2019-12-22T15:41:40.000Z">
+    <meta property="article:author" content="Sugarman">
+    <meta property="og:article:tag" content=", 数组"> 
+
+
+
+
+
+    <!-- ### Analytics ### -->
+    
+
+
+
+
+
+
+
+
+    <!-- ### Canonical link ### -->
+    <link rel="canonical" href="https://boysg.github.io/2019/12/22/数据结构之顺序表/">
+
+    <!-- ### Structured Data ### -->
+    
+
+
+
+<script type="application/ld+json">
+{
+    "@context": "http://schema.org",
+    "url": "https://boysg.github.io/2019/12/22/数据结构之顺序表/",
+    "@type": "BlogPosting",
+    "logo": "https://boysg.github.io/img/suka-favicon.ico",
+    "mainEntityOfPage": {
+        "@type": "WebPage",
+        "@id": "https://boysg.github.io/2019/12/22/数据结构之顺序表/"
+    },
+    "headline": "数据结构之顺序表 | 小尹的博客",
+    
+    "image": {
+        "@type": "ImageObject",
+        "url": "https://boysg.github.io/img/suka-favicon.ico"
+    },
+    
+    "datePublished": "2019-12-22T15:41:40.000Z",
+    "dateModified": "2020-01-06T16:34:29.321Z",
+    "author": {
+        "@type": "Person",
+        "name": "Sugarman",
+        "image": {
+            "@type": "ImageObject",
+            "url": "https://boysg.github.io/img/default_avatar.png"
+        },
+        "description": "Hi, nice to meet you."
+    },
+    "publisher": {
+        "@type": "Organization",
+        "name": "小尹的博客",
+        "logo": {
+            "@type": "ImageObject",
+            "url": "https://boysg.github.io/img/suka-favicon.ico"
+        }
+    },
+    
+    "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://boysg.github.io/search?s={search_term_string}",
+        "query-input": "required name=search_term_string"
+    },
+    
+    "keywords": ", 数组",
+    "description": "线性表"
+}
+</script>
+
+
+
+    <!-- ### Custom Head ### -->
+    
+
+
+</head>
+
+    <body>
+        
+
+            
+
+            <!-- ### Main content ### -->
+            <!-- ## Header ##-->
+<header>
+    <h1 class="header-title text-center"><a href="/">小尹的博客</a></h1>
+
+    <p class="text-center header-slogan">
+        
+            
+                Hi, nice to meet you.
+            
+        
+    </p>
+
+    <nav class="navbar-section text-center">
+    
+        <a href="/" class="navbar-link">首页</a>
+    
+    
+        <a href="/archives/" class="navbar-link">归档</a>
+    
+    
+        <a href="/search" class="navbar-link">搜索</a>
+    
+    
+    
+        <div class="dropdown dropdown-right">
+    <a class="navbar-link dropdown-toggle" tabindex="0">分享</a>
+    <ul class="menu share-menu">
+
+        <!-- Share Weibo -->
+        
+        <li class="menu-item">
+            <a href="http://service.weibo.com/share/share.php?appkey=&title=小尹的博客&url=https://boysg.github.io&pic=https://boysg.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+        </li>
+        
+
+        <!-- Share Twitter -->
+        
+        <li class="menu-item">
+            <a href="https://twitter.com/intent/tweet?text=小尹的博客&url=https://boysg.github.io&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+        </li>
+        
+
+        <!-- Share Facebook -->
+        
+        <li class="menu-item">
+            <a href="https://www.facebook.com/sharer/sharer.php?u=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+        </li>
+        
+
+        <!-- Share Google+ -->
+        
+        <li class="menu-item">
+            <a href="https://plus.google.com/share?url=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+        </li>
+        
+
+        <!-- Share LinkedIn -->
+        
+        <li class="menu-item">
+            <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://boysg.github.io&title=数据结构之顺序表" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+        </li>
+        
+
+        <!-- Share QQ -->
+        
+        <li class="menu-item">
+            <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=数据结构之顺序表&summary=XiaoYin&pics=https://boysg.github.io/img/suka-favicon.ico&url=https://boysg.github.io" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+        </li>
+        
+
+        <!-- Share Telegram -->
+        
+        <li class="menu-item">
+            <a href="https://t.me/share/url?url=https://boysg.github.io&text=数据结构之顺序表" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+        </li>
+        
+
+        <!-- QRCode -->
+        
+        <li class="menu-item">
+            <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3ElEQVR42u3ay47CMBBE0fz/T8MKiYVdVZ1kYbdvNjMSEB+kxk4/rs+C1wUKFChQA9Qlrt/r8kaD940+79YB1QuVLDa6SbpYsg6ofqhZgDuUC+x0HVDnoEYLjIJ89Jnky4E6D6VeH8FnBzmo81DqoFTBPjuU3f0ePSWAWh6VJA5v/H09mwG1JCoqPEw2zdkGmvw4HlddQC2Lmh2qLuBV0qA2XZWIgOqFmgWyOlBHQZ8czNMiCKhWKLdI8rr6crcTB1DbotKNT22m6sei8KB6oZKDONlgnx7moPqhVKErAbnCSNLcBNUP5ZqNycOa+t8lp6B6oJIiRRWrIPJHAqodyiUFrrHkmpgu2EH1QLmGjiqqpklmOnwBqg8qDdp0oKLS3AbVD+UOy6RJXR3Emd4XVAuUSirlQ74ZyEkKZrZoBmpLVGWotFK8uDWMA6oNKi3kVzdKB4ka26C2R7ngrA5L3C6agdoa5ZJKl1i6QL5ddQG1JcpdVVzaJJADOKC2RiUDzWnBP22Ag+qPcgGeDmwlhfxy1QXUtihXfFVw19B0SFBnopIhruRQl01vUEegkgKsSyLSpARUL5TaGN2QTlzAcMM+oNqgkmHktGibNLKjhzxQ26JWukCBAgXq7/oChwCQLxteD0YAAAAASUVORK5CYII=" alr="QRCode">
+        </li>
+        
+
+    </ul>
+</div>
+    
+    
+</nav>
+</header>
+
+            
+    <!-- ## Post ## -->
+    
+    
+
+
+<div class="post-container">
+    <div id="post-card" class="card">
+        
+        <div class="card-item-container">
+            <div class="card-inner-cell">
+                <!-- # Post Header Info # -->
+                <div class="card-header">
+                    
+    <h1 class="card-title h3 mb-2">数据结构之顺序表</h1>
+
+
+
+
+<div class="post-header-info">
+    <p class="post-header-info-left text-gray">
+        <img class="author-thumb lazyload" data-src="/img/default_avatar.png" src="/img/suka-lazyload.gif" alt="Sugarman's Avatar">
+        <span>2019-12-22</span>
+        
+            <span class="suka-devide-dot"></span>
+            <a class="category-link" href="/categories/数据结构/">数据结构</a>
+        
+        
+            <!-- Busuanzi Post Views -->
+<span id="busuanzi_container_page_pv" hidden>
+    <span class="suka-devide-dot"></span>
+    <span></span>
+    <span id="busuanzi_value_page_pv"></span>
+    <span>Views</span>
+</span>
+        
+        
+    </p>
+    <div class="post-header-info-right">
+        
+            <div class="dropdown dropdown-right">
+<a class="dropdown-toggle" tabindex="0">分享本文</a>
+<ul class="menu share-menu">
+    <!-- Share Weibo -->
+    
+    <li class="menu-item">
+        <a href="http://service.weibo.com/share/share.php?appkey=&title=数据结构之顺序表&url=https://boysg.github.io/2019/12/22/数据结构之顺序表/&pic=https://boysg.github.io/img/suka-favicon.ico&searchPic=false&style=simple" target="_blank" rel="external noopener noreferrer nofollow">分享到微博</a>
+    </li>
+    
+
+    <!-- Share Twitter -->
+    
+    <li class="menu-item">
+        <a href="https://twitter.com/intent/tweet?text=数据结构之顺序表&url=https://boysg.github.io/2019/12/22/数据结构之顺序表/&via=Sugarman" target="_blank" rel="external noopener noreferrer nofollow">分享到 Twitter</a>
+    </li>
+    
+
+    <!-- Share Facebook -->
+    
+    <li class="menu-item">
+        <a href="https://www.facebook.com/sharer/sharer.php?u=https://boysg.github.io/2019/12/22/数据结构之顺序表/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Facebook</a>
+    </li>
+    
+
+    <!-- Share Google+ -->
+    
+    <li class="menu-item">
+        <a href="https://plus.google.com/share?url=https://boysg.github.io/2019/12/22/数据结构之顺序表/" target="_blank" rel="external noopener noreferrer nofollow">分享到 Google+</a>
+    </li>
+    
+
+    <!-- Share LinkedIn -->
+    
+    <li class="menu-item">
+        <a href="https://www.linkedin.com/shareArticle?mini=true&url=https://boysg.github.io/2019/12/22/数据结构之顺序表/&title=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 LinkedIn</a>
+    </li>
+    
+
+    <!-- Share QQ -->
+    
+    <li class="menu-item">
+        <a href="http://connect.qq.com/widget/shareqq/index.html?site=小尹的博客&title=小尹的博客&summary=XiaoYin&pics=https://boysg.github.io/img/suka-favicon.ico&url=https://boysg.github.io/2019/12/22/数据结构之顺序表/" target="_blank" rel="external noopener noreferrer nofollow"> 分享到 QQ</a>
+    </li>
+    
+
+    <!-- Share Telegram -->
+    
+    <li class="menu-item">
+        <a href="https://t.me/share/url?url=https://boysg.github.io/2019/12/22/数据结构之顺序表/&text=小尹的博客" target="_blank" rel="external noopener noreferrer nofollow">分享到 Telegram</a>
+    </li>
+    
+
+    <!-- QRCode -->
+    
+    <li class="menu-item">
+        <img src="data:image/png;base64,iVBORw0KGgoAAAANSUhEUgAAAJQAAACUCAAAAABQV18IAAAB3ElEQVR42u3ay47CMBBE0fz/T8MKiYVdVZ1kYbdvNjMSEB+kxk4/rs+C1wUKFChQA9Qlrt/r8kaD940+79YB1QuVLDa6SbpYsg6ofqhZgDuUC+x0HVDnoEYLjIJ89Jnky4E6D6VeH8FnBzmo81DqoFTBPjuU3f0ePSWAWh6VJA5v/H09mwG1JCoqPEw2zdkGmvw4HlddQC2Lmh2qLuBV0qA2XZWIgOqFmgWyOlBHQZ8czNMiCKhWKLdI8rr6crcTB1DbotKNT22m6sei8KB6oZKDONlgnx7moPqhVKErAbnCSNLcBNUP5ZqNycOa+t8lp6B6oJIiRRWrIPJHAqodyiUFrrHkmpgu2EH1QLmGjiqqpklmOnwBqg8qDdp0oKLS3AbVD+UOy6RJXR3Emd4XVAuUSirlQ74ZyEkKZrZoBmpLVGWotFK8uDWMA6oNKi3kVzdKB4ka26C2R7ngrA5L3C6agdoa5ZJKl1i6QL5ddQG1JcpdVVzaJJADOKC2RiUDzWnBP22Ag+qPcgGeDmwlhfxy1QXUtihXfFVw19B0SFBnopIhruRQl01vUEegkgKsSyLSpARUL5TaGN2QTlzAcMM+oNqgkmHktGibNLKjhzxQ26JWukCBAgXq7/oChwCQLxteD0YAAAAASUVORK5CYII=" alt="QRCode">
+    </li>
+    
+
+</ul>
+</div>
+        
+    </div>
+</div>
+                </div>
+                <div class="card-body">
+                    
+                        
+                            <div id="post-toc">
+                                <ol class="post-toc"><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#线性表"><span class="post-toc-number">1.</span> <span class="post-toc-text">线性表</span></a><ol class="post-toc-child"><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#逻辑定义"><span class="post-toc-number">1.1.</span> <span class="post-toc-text">逻辑定义</span></a></li><li class="post-toc-item post-toc-level-3"><a class="post-toc-link" href="#基本运算"><span class="post-toc-number">1.2.</span> <span class="post-toc-text">基本运算</span></a></li></ol></li><li class="post-toc-item post-toc-level-2"><a class="post-toc-link" href="#顺序表"><span class="post-toc-number">2.</span> <span class="post-toc-text">顺序表</span></a></li></ol>
+                            </div>
+                        
+                    
+                    <article id="post-content">
+                        <h2 id="线性表"><a href="#线性表" class="headerlink" title="线性表"></a>线性表</h2><h3 id="逻辑定义"><a href="#逻辑定义" class="headerlink" title="逻辑定义"></a>逻辑定义</h3><p>线性表是一种由n个数据元素（结点）a(1), a(2), …, a(n)组成的有限序列，其中n为元素的个数即表的长度，n为0时表示空表。</p>
+<blockquote>
+<p>a(1), a(2), …, a(i-1), a(i), a(i+1), …, a(n)</p>
+</blockquote>
+<p>线性表的逻辑特征：</p>
+<ol>
+<li>有且仅有一个<strong>开始元素</strong>a(1)，它没有前趋，仅有一个直接后继a(2)</li>
+<li>有且仅有一个<strong>终端元素</strong>a(n)，它没有后继，仅有一个直接前趋a(n-1)</li>
+<li>其余元素a(i)（ 2 &lt;= i &lt;= n-1 ）称为<strong>内部元素</strong>，有且仅有一个直接前趋a(i-1)和一个直接后继a(i+1)</li>
+</ol>
+<h3 id="基本运算"><a href="#基本运算" class="headerlink" title="基本运算"></a>基本运算</h3><ol>
+<li>InitList(L) //构造一个空的线性表L</li>
+<li>ListLength(L) //返回线性表L中元素个数</li>
+<li>GetNode(L, i) //返回第i个元素L[i]（ 1 &lt;= i &lt;= ListLength(L) ）</li>
+<li>LocateNode(L, x) //返回表L中第一个值为x的元素的位置，若没有符合的元素则返回0</li>
+<li>InsertList(L, i, x) //在第i个元素之前插入一个值为x的新元素（表长度+1）</li>
+<li>DeleteList(L, i) //删除第i个元素（表长度-1）</li>
+</ol>
+<h2 id="顺序表"><a href="#顺序表" class="headerlink" title="顺序表"></a>顺序表</h2><p>将线性表的数据元素按其逻辑次序依次存入<strong>一组地址连续的存储单元</strong>里，这种存储方法叫做<em>顺序存储</em>，用这种方法存储的线性表称为<em>顺序表</em>。</p>
+<p>首先定义顺序表的表长和数据类型：</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="meta-keyword">define</span> LIST_SIZE 100</span></span><br><span class="line"><span class="keyword">typedef</span> <span class="keyword">int</span> DataType;</span><br></pre></td></tr></table></figure>
+
+<p>然后定义一个顺序表</p>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">typedef</span> <span class="class"><span class="keyword">struct</span> <span class="title">seq</span></span></span><br><span class="line"><span class="class">&#123;</span></span><br><span class="line">    DataType data[LIST_SIZE];</span><br><span class="line">    <span class="keyword">int</span> length;</span><br><span class="line">&#125;SeqList;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>顺序表的插入运算</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//i表示插入位置，x表示插入元素</span></span><br><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">InsertList</span><span class="params">(SeqList *l, <span class="keyword">int</span> i, DataType x)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断位置i是否合法</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; l-&gt;length + <span class="number">1</span>)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"position error"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//判断顺序表空间是否已满</span></span><br><span class="line">    <span class="keyword">if</span> (l-&gt;length &gt;= LIST_SIZE)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"overflow"</span>);</span><br><span class="line">        <span class="keyword">return</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//从最后一个元素到新元素插入位置的元素，依次后移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> j = l-&gt;length - <span class="number">1</span>; j &gt;= i <span class="number">-1</span>; j--)</span><br><span class="line">    &#123;</span><br><span class="line">        l-&gt;data[j + <span class="number">1</span>] = l-&gt;data[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//插入新元素</span></span><br><span class="line">    l-&gt;data[i - <span class="number">1</span>] = x;</span><br><span class="line">    <span class="comment">//表长度+1</span></span><br><span class="line">    l-&gt;length++;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>当插入位置在表末尾时，时间复杂度为O(1)；当插入表头时，时间复杂为O(n)；平均下来，顺序表插入的时间复杂度为O(n/2)，即O(n)。</p>
+<ul>
+<li>顺序表的删除运算</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">//i表示删除位置，返回被删除的元素</span></span><br><span class="line"><span class="function">DataType <span class="title">DeleteList</span><span class="params">(SeqList *l, <span class="keyword">int</span> i)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="comment">//判断位置i是否合法</span></span><br><span class="line">    <span class="keyword">if</span> (i &lt; <span class="number">1</span> || i &gt; l-&gt;length)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"position error"</span>);</span><br><span class="line">        <span class="built_in">exit</span>(<span class="number">0</span>);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//保存将被删除的元素</span></span><br><span class="line">    DataType x = l-&gt;data[i];</span><br><span class="line">    <span class="comment">//从删除元素的后一个元素开始，依次前移一位</span></span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> j = i; j &lt;= l-&gt;length; j++)</span><br><span class="line">    &#123;</span><br><span class="line">        l-&gt;data[j - <span class="number">1</span>] = l-&gt;data[j];</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="comment">//表长度-1</span></span><br><span class="line">    l-&gt;length--;</span><br><span class="line">    <span class="keyword">return</span> x;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>顺序表删除运算的时间复杂度等同于插入运算。</p>
+<ul>
+<li>打印顺序表</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">printListInfo</span><span class="params">(SeqList *l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"list length = %d\n"</span>, l-&gt;length);</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">int</span> *i = l-&gt;data; i &lt; l-&gt;data + l-&gt;length; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="built_in">printf</span>(<span class="string">"%d "</span>, *i);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="built_in">printf</span>(<span class="string">"\n"</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<ul>
+<li>初始化一个顺序表，并测试插入运算和删除运算</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">int</span> <span class="title">main</span><span class="params">(<span class="keyword">int</span> argc, <span class="keyword">char</span> *argv[])</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    SeqList s;</span><br><span class="line">    s.length = <span class="number">0</span>;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">1</span>; i &lt; <span class="number">10</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        s.data[i - <span class="number">1</span>] = i;</span><br><span class="line">        s.length++;</span><br><span class="line">    &#125;</span><br><span class="line">    printListInfo(&amp;s);</span><br><span class="line">    InsertList(&amp;s, <span class="number">4</span>, <span class="number">888</span>);</span><br><span class="line">    printListInfo(&amp;s);</span><br><span class="line">    DeleteList(&amp;s, <span class="number">5</span>);</span><br><span class="line">    printListInfo(&amp;s);</span><br><span class="line">	<span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+<p>输出结果</p>
+<blockquote>
+<p>list length = 9<br>1 2 3 4 5 6 7 8 9<br>list length = 10<br>1 2 3 888 4 5 6 7 8 9<br>list length = 9<br>1 2 3 888 5 6 7 8 9</p>
+</blockquote>
+<ul>
+<li>顺序表逆置，时间复杂度为O(n)</li>
+</ul>
+<figure class="highlight c"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">void</span> <span class="title">Converts</span><span class="params">(SeqList *l)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    DataType x;</span><br><span class="line">    <span class="keyword">for</span> (<span class="keyword">size_t</span> i = <span class="number">0</span>; i &lt; l-&gt;length / <span class="number">2</span>; i++)</span><br><span class="line">    &#123;</span><br><span class="line">        x = l-&gt;data[i];</span><br><span class="line">        l-&gt;data[i] = l-&gt;data[l-&gt;length - <span class="number">1</span> - i];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+
+                    </article>
+                    
+
+
+    <blockquote id="date-expire-notification" class="post-expired-notify">本文最后更新于 <span id="date-expire-num"></span> 天前，文中所描述的信息可能已发生改变</blockquote>
+    <script>
+        var dateUpdate = Date.parse("2020-01-07");
+        var nowDate = new Date();
+        var a = nowDate.getTime();
+        var b = a - dateUpdate;
+        var daysUpdateExpire = Math.floor(b/(24*3600*1000));
+        if (daysUpdateExpire >= 120) {
+            document.getElementById('date-expire-num').innerHTML = daysUpdateExpire;
+        } else {
+            document.getElementById('date-expire-notification').style.display = 'none';
+        }
+    </script>
+
+
+<p class="post-footer-info mb-0 pt-0">本文发表于&nbsp;<time datetime="2019-12-22T15:41:40.000Z" itemprop="datePublished">2019-12-22</time>
+
+    , 最后修改于&nbsp;<time datetime="2020-01-06T16:34:29.321Z" itemprop="dateModified">2020-01-07</time>
+
+</p>
+<p class="post-footer-info mb-0 pt-2">
+
+<span class="post-categories-list mt-2">
+
+
+<a class="post-categories-list-item" href='/categories/数据结构/'>数据结构</a>
+
+</span>
+
+
+
+<span class="post-tags-list mt-2">
+
+
+<a class="post-tags-list-item" href="/tags/数组/" rel="tag">#&nbsp;数组</a>
+
+</span>
+
+
+</p>
+
+                </div>
+                
+<div class="post-nav px-2 bg-gray">
+<ul class="pagination">
+    <!-- Prev Nav -->
+    
+        <li class="page-item page-prev">
+            <a href="/2019/12/31/数据结构之链表/" rel="prev">
+                <div class="page-item-title"><i class="icon icon-back" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">数据结构之链表</div>
+            </a>
+        </li>
+    
+
+    <!-- Next Nav -->
+    
+        <li class="page-item page-next">
+            <a href="/2019/11/12/C-之泛型/" rel="next">
+                <div class="page-item-title"><i class="icon icon-forward" aria-hidden="true"></i></div>
+                <div class="page-item-subtitle">C#之泛型</div>
+            </a>
+        </li>
+    
+</ul>
+</div>
+
+                
+                    <!-- # Comment # -->
+                    
+                
+            </div>
+        </div>
+    </div>
+</div>
+
+            <!-- ### Footer ### -->
+            <footer class="text-center">
+    <!-- footer copyright -->
+    <p class="footer-copyright mb-0">Copyright&nbsp;©&nbsp;<span data-year></span>
+        <a class="footer-copyright-a" href="https://boysg.github.io">小尹的博客</a>
+    </p>
+    <!-- footer custom text -->
+    <p class="footer-text mb-0">
+    
+    </p>
+    <!-- footer develop info -->
+    <p class="footer-develop mb-0">
+        
+            
+    <!-- Busuanzi User Views -->
+    <span id="busuanzi_container_site_uv" hidden>
+        <span></span>
+        <span id="busuanzi_value_site_uv"></span>
+        <span>Viewers</span>
+        
+            <span>|</span>
+        
+    </span>
+
+
+
+        
+        
+        Powered by&nbsp;<!--
+         --><a href="https://hexo.io" target="_blank" class="footer-develop-a" rel="external nofollow noopener noreferrer">Hexo</a><span class="footer-develop-divider"></span>Theme&nbsp;-&nbsp;<!--
+         --><a href="https://github.com/SukkaW/hexo-theme-suka" target="_blank" class="footer-develop-a" rel="external noopener">Suka</a>
+    </p>
+</footer>
+
+        
+
+        <!-- ### Import File ### -->
+        <!-- ### Footer JS Import ### -->
+
+<script>
+window.lazyLoadOptions = {
+    elements_selector: ".lazyload",
+    threshold: 50
+};
+
+
+
+    /* Copyright */
+    var copyrightNow = new Date().getFullYear();
+    var copyrightContent = document.querySelector('span[data-year]')
+    
+        copyrightSince = 2019;
+        if (copyrightSince === copyrightNow) {
+            copyrightContent.textContent = copyrightNow
+        } else {
+            copyrightContent.textContent = copyrightSince + ' - ' + copyrightNow
+        }
+    
+
+
+
+/* Cnosole Log */
+console.log('\n %c Suka Theme (hexo-theme-suka) | © SukkaW | Verision 1.3.3 %c https://github.com/SukkaW/hexo-theme-suka \n', 'color: #fff; background: #444; padding:5px 0;', 'background: #bbb; padding:5px 0;');
+</script>
+
+<!-- vanilla-lazyload -->
+
+    <script src="/lib/vanilla-lazyload/lazyload.min.js" async></script>
+
+
+
+    <!-- Busuanzi -->
+    
+    <script src="https://cdn.jsdelivr.net/npm/busuanzi@2.3.0/bsz.pure.mini.js" async></script>
+
+
+<!-- Offset -->
+
+
+
+
+
+
+
+<!-- gallery.js -->
+
+
+<!-- Comment -->
+
+
+<!-- ### Custom Footer ### -->
+
+
+    </body>
+
+</html>
